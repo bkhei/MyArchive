@@ -1,7 +1,4 @@
-Original App Design Project - README Template
-===
-
-# APP_NAME_HERE
+# MyArchive
 
 ## Table of Contents
 
@@ -14,17 +11,30 @@ Original App Design Project - README Template
 
 ### Description
 
-[Description of your app]
+A story-sharing app that lets users read and create their own stories.
 
 ### App Evaluation
 
 [Evaluation of your app across the following attributes]
-- **Category:**
+- **Category:** 
+    1. Entertainment 
+    2. Books
 - **Mobile:**
+    - Fully mobile
+    - iOS exclusive
 - **Story:**
-- **Market:**
-- **Habit:**
+    - Users will be able to read, create and post their own original stories
+- **Market:** Anyone, ages 13 and up 
+- **Habit:** 
+    1. Data Analysis
+    2. Customization
+    3. Notifications
+        a. Story updates
+        b. Likes, comments 
+        c. App News
 - **Scope:**
+    - Profile creation
+    - Posting / sharing  capabilities 
 
 ## Product Spec
 
@@ -32,48 +42,79 @@ Original App Design Project - README Template
 
 **Required Must-have Stories**
 
-* [fill in your required user stories here]
-* ...
+* Users can create a profile and login
+* Users can create a story
+* Users can view their own stories
+* Users can publish their created stories
+* Users can create chapters for their stories
+* Users can view other users' story overview
+* Users can view other users' story details
+* Users can view other users' story chapters
+* Users can search stories by category
+* Users can search stories by title
+* Users can add stories to their library (private)
 
 **Optional Nice-to-have Stories**
 
-* [fill in your required user stories here]
-* ...
+* Users can add stories to a reading list (public)
+* Users can like and leave comments on chapters of stories
+* Users can participate in leaderboards based on the like on their stories
+* Notifications
+* Messages between users
+* Tagging system for stories
 
 ### 2. Screen Archetypes
 
-- [ ] [list first screen here]
-* [list associated required story here]
-* ...
-list second screen here]
-* [list associated required story here]
-* ...
+- [ ] Login/Sign Up Screen
+* users can create a profile and login
+- [ ] Home Screen
+* users can view other users' stories
+- [ ] Detail Screen
+* Users can view other users' story details
+* Users can add stories to their library (private)
+- [ ] Read Screen
+* Users can view other users' story chapters
+- [ ] Search Screen
+* Users can search stories by category
+* Users can search stories by title
+- [ ] Your Stories Screen
+* Users can view their own stories
+* Users can create a story
+- [ ] Edit Overview Screen
+* Users can create a story
+- [ ] Edit Chapter Screen
+* Users can publish their created stories
+- [ ] Library Screen
+* Users can add stories to their library (private)
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* [fill out your first tab]
-* [fill out your second tab]
-* [fill out your third tab]
+* Home Tab
+* Search Tab
+* Library Tab
+* Write Tab
 
 **Flow Navigation** (Screen to Screen)
 
-- [ ] [list first screen here]
-* [list screen navigation here]
-* ...
-- [ ] [list second screen here]
-* [list screen navigation here]
-* ...
+- [ ] Home Screen
+* Detail Screen
+* Read Screen
+- [ ] Search Screen
+* Search Result Screen
+* Detail Screen
+* Read Screen
+- [ ] Library Screen
+* Detail Screen
+* Read Screen
+- [ ] Write Screen
+* Edit Overview Screen
+* Edit Chapter Screen
 
 ## Wireframes
 
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
-
-### [BONUS] Digital Wireframes & Mockups
-
-### [BONUS] Interactive Prototype
+![](https://hackmd.io/_uploads/H1QcGDEz6.jpg)
 
 ## Schema 
 
