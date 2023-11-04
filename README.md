@@ -15,7 +15,6 @@ A story-sharing app that lets users read and create their own stories.
 
 ### App Evaluation
 
-[Evaluation of your app across the following attributes]
 - **Category:** 
     1. Entertainment 
     2. Books
@@ -42,26 +41,28 @@ A story-sharing app that lets users read and create their own stories.
 
 **Required Must-have Stories**
 
-* Users can create a profile and login
-* Users can create a story
-* Users can view their own stories
-* Users can publish their created stories
-* Users can create chapters for their stories
-* Users can view other users' story overview
-* Users can view other users' story details
-* Users can view other users' story chapters
-* Users can search stories by category
-* Users can search stories by title
-* Users can add stories to their library (private)
+- [ ] Users can create a profile and login
+- [ ] Users can create a story
+- [ ] Users can view their own stories
+- [ ] Users can publish their created stories
+- [ ] Users can create chapters for their stories
+- [ ] Users can view other users' published story cover, title, and description
+- [ ] Users can view other users' published story details
+- [ ] Users can view other users' published story chapters
+- [ ] Users can search stories by category
+- [ ] Users can search stories by title
+- [ ] Users can add stories to their library (private)
 
 **Optional Nice-to-have Stories**
 
-* Users can add stories to a reading list (public)
-* Users can like and leave comments on chapters of stories
-* Users can participate in leaderboards based on the like on their stories
-* Notifications
-* Messages between users
-* Tagging system for stories
+- [ ] Users can view other user's profile
+- [ ] Users can view their own profile
+- [ ] Users can add stories to a public reading list
+- [ ] Users can like and leave comments on chapters of stories
+- [ ] Users can participate in leaderboards based on the likes on their stories
+- [ ] Notifications
+- [ ] Messages between users
+- [ ] Tagging system for stories
 
 ### 2. Screen Archetypes
 
@@ -77,15 +78,19 @@ A story-sharing app that lets users read and create their own stories.
 - [ ] Search Screen
 * Users can search stories by category
 * Users can search stories by title
+- [ ] Search Result Screen
+* Users can search stories by category
+* Users can search stories by title
 - [ ] Your Stories Screen
 * Users can view their own stories
 * Users can create a story
-- [ ] Edit Overview Screen
+- [ ] Edit Detail Screen
 * Users can create a story
-- [ ] Edit Chapter Screen
 * Users can publish their created stories
+- [ ] Edit Chapter Screen
+* Users can create chapters for their stories
 - [ ] Library Screen
-* Users can add stories to their library (private)
+* Users can add stories to their private library
 
 ### 3. Navigation
 
