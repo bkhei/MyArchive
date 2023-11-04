@@ -13,6 +13,9 @@
 		A98A07B52AF6DEC200123CC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A98A07B32AF6DEC200123CC2 /* Main.storyboard */; };
 		A98A07B72AF6DEC400123CC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A98A07B62AF6DEC400123CC2 /* Assets.xcassets */; };
 		A98A07BA2AF6DEC400123CC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A98A07B82AF6DEC400123CC2 /* LaunchScreen.storyboard */; };
+		A98A07C32AF6E48300123CC2 /* ParseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A98A07C22AF6E48300123CC2 /* ParseSwift */; };
+		A98A07C62AF6E5A700123CC2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A98A07C52AF6E5A700123CC2 /* Alamofire */; };
+		A98A07C92AF6E5D500123CC2 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = A98A07C82AF6E5D500123CC2 /* AlamofireImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A98A07C32AF6E48300123CC2 /* ParseSwift in Frameworks */,
+				A98A07C62AF6E5A700123CC2 /* Alamofire in Frameworks */,
+				A98A07C92AF6E5D500123CC2 /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +89,11 @@
 			dependencies = (
 			);
 			name = MyArchive;
+			packageProductDependencies = (
+				A98A07C22AF6E48300123CC2 /* ParseSwift */,
+				A98A07C52AF6E5A700123CC2 /* Alamofire */,
+				A98A07C82AF6E5D500123CC2 /* AlamofireImage */,
+			);
 			productName = MyArchive;
 			productReference = A98A07AA2AF6DEC200123CC2 /* MyArchive.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +122,11 @@
 				Base,
 			);
 			mainGroup = A98A07A12AF6DEC200123CC2;
+			packageReferences = (
+				A98A07C12AF6E48300123CC2 /* XCRemoteSwiftPackageReference "Parse-Swift" */,
+				A98A07C42AF6E5A700123CC2 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				A98A07C72AF6E5D500123CC2 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+			);
 			productRefGroup = A98A07AB2AF6DEC200123CC2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -361,6 +377,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A98A07C12AF6E48300123CC2 /* XCRemoteSwiftPackageReference "Parse-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/parse-community/Parse-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.14.2;
+			};
+		};
+		A98A07C42AF6E5A700123CC2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+		A98A07C72AF6E5D500123CC2 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A98A07C22AF6E48300123CC2 /* ParseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A98A07C12AF6E48300123CC2 /* XCRemoteSwiftPackageReference "Parse-Swift" */;
+			productName = ParseSwift;
+		};
+		A98A07C52AF6E5A700123CC2 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A98A07C42AF6E5A700123CC2 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		A98A07C82AF6E5D500123CC2 /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A98A07C72AF6E5D500123CC2 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A98A07A22AF6DEC200123CC2 /* Project object */;
 }
