@@ -89,8 +89,7 @@
 				A98A07DE2AF8012F00123CC2 /* Models */,
 				A98A07AD2AF6DEC200123CC2 /* AppDelegate.swift */,
 				A98A07AF2AF6DEC200123CC2 /* SceneDelegate.swift */,
-				A98A07B12AF6DEC200123CC2 /* LoginViewController.swift */,
-				A98A07CA2AF7275B00123CC2 /* SignUpViewController.swift */,
+				A98A07E32AF8348500123CC2 /* Login&Signup */,
 				A98A07CC2AF7276F00123CC2 /* HomeViewController.swift */,
 				A98A07CE2AF7277D00123CC2 /* DetailViewController.swift */,
 				A98A07D02AF7279300123CC2 /* ReadViewController.swift */,
@@ -115,6 +114,15 @@
 				A98A07E12AF82A9B00123CC2 /* Story.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A98A07E32AF8348500123CC2 /* Login&Signup */ = {
+			isa = PBXGroup;
+			children = (
+				A98A07B12AF6DEC200123CC2 /* LoginViewController.swift */,
+				A98A07CA2AF7275B00123CC2 /* SignUpViewController.swift */,
+			);
+			path = "Login&Signup";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
