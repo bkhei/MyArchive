@@ -8,6 +8,12 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    // Storyboard navigation controller identities
+    private enum NavID {
+        static let loginNCID = "LoginNavigationController"
+        static let homeNCID = "HomeNavigationController"
+        static let storyboardID = "Main"
+    }
 
     var window: UIWindow?
 
@@ -17,6 +23,42 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        // Observers to recieve notifications
+        NotificationCenter.default.addObserver(forName: Notification.Name("login"), object: nil, queue: OperationQueue.main) {
+            [weak self] _ in
+            self?.login() // Calling login function
+        }
+        NotificationCenter.default.addObserver(forName: Notification.Name("logout"), object: nil, queue: OperationQueue.main) {
+            [weak self] _ in
+            self?.logout() // Calling logout function
+        }
+    }
+    
+    // Private login and logout functions
+    private func login() {
+        let storyboard = UIStoryboard(name: NavID.storyboardID, bundle: nil)
+        // Changing root view controller from LoginViewController to HomeViewController
+        self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: NavID.homeNCID)
+    }
+    private func logout() {
+        // Logging out user (NOTE: User is a parse object), has access to logout() method
+        User.logout {
+            [weak self] result in
+            
+            switch result {
+            case .success:
+                // If logout successful...
+                DispatchQueue.main.async {
+                    let storyboard = UIStoryboard(name: NavID.storyboardID, bundle: nil)
+                    // Setting root view controller from HomeViewController to LoginViewController
+                    self?.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: NavID.loginNCID)
+                }
+            case .failure(let error):
+                // If logout unsuccessful...
+                print("Logout error: \(error)")
+            }
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
