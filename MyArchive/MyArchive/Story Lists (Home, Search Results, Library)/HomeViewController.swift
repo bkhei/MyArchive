@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         // Setting table view data source
-        tableView.dataSource = self
+        //tableView.dataSource = self
     }
     @IBAction func onLogoutTapped(_ sender: Any) {
         confirmLogoutAlert()
@@ -37,6 +37,7 @@ extension HomeViewController {
         present(alertController, animated: true)
     }
 }
+/*
 // Conforming view controller to UITableViewDataSource -- INCOMPLETE
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,3 +50,4 @@ extension HomeViewController: UITableViewDataSource {
     
     
 }
+*/
