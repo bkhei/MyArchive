@@ -28,6 +28,7 @@
 		A98A07DD2AF7284000123CC2 /* EditChapterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98A07DC2AF7284000123CC2 /* EditChapterViewController.swift */; };
 		A98A07E02AF8014200123CC2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98A07DF2AF8014200123CC2 /* User.swift */; };
 		A98A07E22AF82A9B00123CC2 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98A07E12AF82A9B00123CC2 /* Story.swift */; };
+		A98A07EA2AF87EC800123CC2 /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98A07E92AF87EC800123CC2 /* StoryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		A98A07DC2AF7284000123CC2 /* EditChapterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChapterViewController.swift; sourceTree = "<group>"; };
 		A98A07DF2AF8014200123CC2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A98A07E12AF82A9B00123CC2 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		A98A07E92AF87EC800123CC2 /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,9 +92,9 @@
 				A98A07AD2AF6DEC200123CC2 /* AppDelegate.swift */,
 				A98A07AF2AF6DEC200123CC2 /* SceneDelegate.swift */,
 				A98A07E32AF8348500123CC2 /* Login&Signup */,
-				A98A07CC2AF7276F00123CC2 /* HomeViewController.swift */,
-				A98A07CE2AF7277D00123CC2 /* DetailViewController.swift */,
-				A98A07D02AF7279300123CC2 /* ReadViewController.swift */,
+				A98A07E42AF8742500123CC2 /* Story Lists (Home, Search Results, Library) */,
+				A98A07E52AF8743400123CC2 /* Detail */,
+				A98A07E62AF8743D00123CC2 /* Read */,
 				A98A07D22AF727A900123CC2 /* SearchViewController.swift */,
 				A98A07D42AF727BC00123CC2 /* SearchResultViewController.swift */,
 				A98A07D62AF727CF00123CC2 /* LibraryViewController.swift */,
@@ -123,6 +125,31 @@
 				A98A07CA2AF7275B00123CC2 /* SignUpViewController.swift */,
 			);
 			path = "Login&Signup";
+			sourceTree = "<group>";
+		};
+		A98A07E42AF8742500123CC2 /* Story Lists (Home, Search Results, Library) */ = {
+			isa = PBXGroup;
+			children = (
+				A98A07CC2AF7276F00123CC2 /* HomeViewController.swift */,
+				A98A07E92AF87EC800123CC2 /* StoryCell.swift */,
+			);
+			path = "Story Lists (Home, Search Results, Library)";
+			sourceTree = "<group>";
+		};
+		A98A07E52AF8743400123CC2 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				A98A07CE2AF7277D00123CC2 /* DetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		A98A07E62AF8743D00123CC2 /* Read */ = {
+			isa = PBXGroup;
+			children = (
+				A98A07D02AF7279300123CC2 /* ReadViewController.swift */,
+			);
+			path = Read;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,6 +244,7 @@
 				A98A07CF2AF7277D00123CC2 /* DetailViewController.swift in Sources */,
 				A98A07E02AF8014200123CC2 /* User.swift in Sources */,
 				A98A07D92AF7282400123CC2 /* YourStoriesViewController.swift in Sources */,
+				A98A07EA2AF87EC800123CC2 /* StoryCell.swift in Sources */,
 				A98A07DB2AF7283100123CC2 /* EditDetailViewController.swift in Sources */,
 				A98A07CB2AF7275B00123CC2 /* SignUpViewController.swift in Sources */,
 				A98A07B02AF6DEC200123CC2 /* SceneDelegate.swift in Sources */,
