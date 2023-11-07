@@ -1,23 +1,25 @@
 //
-//  ViewController.swift
+//  LoginViewController.swift
 //  MyArchive
 //
-//  Created by Yolanda Vega on 11/4/23.
+//  Created by Yolanda Vega on 11/6/23.
 //
 
 import UIKit
 
 class LoginViewController: UIViewController {
-    // Outlets -- connect the associated UI elements
+    // Outlets
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
     
+
     // Action function for login -- REPLACE WITH ACTUAL ALERT
     @IBAction func onLoginTapped(_ sender: Any) {
         // Check all fields are filled (non-nil and non-empty)
@@ -48,4 +50,3 @@ class LoginViewController: UIViewController {
     }
 
 }
-

@@ -8,22 +8,50 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-
+    // Outlets
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var signupButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // Signup method
+    @IBAction func onSignupTapped(_ sender: Any) {
+        // Make sure all fields are non-nil and non-empty
+        guard let username = usernameTextField.text,
+              let email = emailTextField.text,
+              let password = passwordTextField.text,
+              !username.isEmpty,
+              !email.isEmpty,
+              !password.isEmpty else {
+            print("Please fill out all fields.")
+            return
+        }
+        // Parse user sign up
+        var newUser = User()
+        newUser.username = username
+        newUser.email = email
+        newUser.password = password
+        newUser.signup {
+            [weak self] result in
+            
+            switch result {
+            case .success(let user):
+                // successful signup
+                print("Successfully signed up user \(user)")
+                // Posting notification that the user has successfully signed up
+                NotificationCenter.default.post(name: Notification.Name("login"), object: nil)
+            case .failure(let error):
+                // failed signup
+                print("Sign Up Error: \(error)")
+            }
+        }
     }
-    */
+    
 
 }
