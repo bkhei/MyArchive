@@ -38,18 +38,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // Check for cached user for persisted login
         // If there is a current user, log them in
-        /*if User.current != nil {
+        if User.current != nil {
             login()
-        }*/
+        }
 
     }
     
     // Private login and logout functions
     private func login() {
-        let storyboard = UIStoryboard(name: NavID.storyboardID, bundle: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         // Changing root view controller from LoginViewController to HomeViewController
         print("Changing root view controller to home")
-        self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: NavID.homeNCID)
+        self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "HomeNavigationController")
     }
     private func logout() {
         // Logging out user (NOTE: User is a parse object), has access to logout() method
