@@ -16,17 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xnM-nW-nbp" userLabel="Main Stack View">
-                                <rect key="frame" x="20" y="253" width="353" height="282.33333333333337"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xnM-nW-nbp" userLabel="Main Stack View">
+                                <rect key="frame" x="20" y="253" width="353" height="285"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyArchive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpk-c3-hek">
-                                        <rect key="frame" x="83.666666666666686" y="0.0" width="186" height="64"/>
+                                        <rect key="frame" x="83.666666666666686" y="0.0" width="186" height="66.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Vx4-LX-AuD" userLabel="Form Stack View">
-                                        <rect key="frame" x="5.3333333333333428" y="74.000000000000014" width="342.66666666666663" height="208.33333333333337"/>
+                                        <rect key="frame" x="5.3333333333333428" y="76.6666666666667" width="342.66666666666663" height="208.33333333333337"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="U9j-dx-s3p" userLabel="Field Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="342.66666666666669" height="166"/>
@@ -54,6 +54,9 @@
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="filled" title="Login"/>
+                                                        <connections>
+                                                            <action selector="onLoginTapped:" destination="3UM-Mq-juD" eventType="touchUpInside" id="6vf-r2-jGy"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -93,10 +96,15 @@
                             <constraint firstItem="xnM-nW-nbp" firstAttribute="top" relation="lessThanOrEqual" secondItem="ekr-3E-8OV" secondAttribute="top" constant="150" id="LnJ-zS-0Ug"/>
                             <constraint firstItem="ekr-3E-8OV" firstAttribute="trailing" secondItem="xnM-nW-nbp" secondAttribute="trailing" constant="20" id="lWr-4h-OcK"/>
                             <constraint firstItem="xnM-nW-nbp" firstAttribute="leading" secondItem="ekr-3E-8OV" secondAttribute="leading" constant="20" id="sOU-hg-sAG"/>
-                            <constraint firstItem="ekr-3E-8OV" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="xnM-nW-nbp" secondAttribute="bottom" constant="300" id="tPk-lt-OfV"/>
+                            <constraint firstItem="ekr-3E-8OV" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="xnM-nW-nbp" secondAttribute="bottom" constant="280" id="tPk-lt-OfV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="R0G-Wa-ZJf"/>
+                    <connections>
+                        <outlet property="loginButton" destination="uYG-wS-xde" id="RGK-wy-UV5"/>
+                        <outlet property="passwordTextField" destination="UxB-xE-wBF" id="Ozh-lT-afy"/>
+                        <outlet property="usernameTextField" destination="M5g-Jg-thG" id="kle-LM-WGC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kdj-xB-Sqp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -152,7 +160,10 @@
                                                     <constraint firstAttribute="height" constant="50" id="FKs-eo-d4Z"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Login"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Sign Up"/>
+                                                <connections>
+                                                    <action selector="onSignupTapped:" destination="6Bl-HA-J5B" eventType="touchUpInside" id="lht-8U-KIT"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -173,53 +184,34 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xWV-HO-Wof"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="vH5-01-QrA" id="Aw1-nU-2n0"/>
+                        <outlet property="passwordTextField" destination="xvw-mA-zzM" id="L5h-l3-ioB"/>
+                        <outlet property="signupButton" destination="0jS-HP-tph" id="4eb-LV-myi"/>
+                        <outlet property="usernameTextField" destination="ssm-By-tpU" id="ElQ-CA-VlP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rGj-uh-vVH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1644" y="-19"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Home-->
         <scene sceneID="r3G-MT-2pK">
             <objects>
                 <viewController id="vAd-1v-ztK" customClass="HomeViewController" customModule="MyArchive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SBg-nF-Gr7">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uup-LK-90M">
-                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="9rj-2x-8ra" customClass="StoryCell" customModule="MyArchive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9rj-2x-8ra" id="G8d-EA-7el">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="zLT-3T-nz1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="uup-LK-90M" firstAttribute="top" secondItem="zLT-3T-nz1" secondAttribute="top" id="9Vv-f4-RMn"/>
-                            <constraint firstItem="zLT-3T-nz1" firstAttribute="bottom" secondItem="uup-LK-90M" secondAttribute="bottom" id="Eyd-gJ-pSn"/>
-                            <constraint firstItem="uup-LK-90M" firstAttribute="leading" secondItem="zLT-3T-nz1" secondAttribute="leading" id="SSE-Tw-qBe"/>
-                            <constraint firstItem="zLT-3T-nz1" firstAttribute="trailing" secondItem="uup-LK-90M" secondAttribute="trailing" id="W7e-FQ-i1W"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="BGJ-WJ-Wvl">
+                    <navigationItem key="navigationItem" title="Home" id="BGJ-WJ-Wvl">
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="e5v-dn-p6i">
                             <connections>
                                 <action selector="onLogoutTapped:" destination="vAd-1v-ztK" id="mMh-e8-Xr2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="tableView" destination="uup-LK-90M" id="xmY-HI-5RK"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LP1-R9-zx4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

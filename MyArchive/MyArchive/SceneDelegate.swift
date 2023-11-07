@@ -27,18 +27,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Observers to recieve notifications
         NotificationCenter.default.addObserver(forName: Notification.Name("login"), object: nil, queue: OperationQueue.main) {
             [weak self] _ in
+            print("Logging user in")
             self?.login() // Calling login function
         }
         NotificationCenter.default.addObserver(forName: Notification.Name("logout"), object: nil, queue: OperationQueue.main) {
             [weak self] _ in
+            print("Logging user out")
             self?.logout() // Calling logout function
         }
+        
+        // Check for cached user for persisted login
+        // If there is a current user, log them in
+        /*if User.current != nil {
+            login()
+        }*/
+
     }
     
     // Private login and logout functions
     private func login() {
         let storyboard = UIStoryboard(name: NavID.storyboardID, bundle: nil)
         // Changing root view controller from LoginViewController to HomeViewController
+        print("Changing root view controller to home")
         self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: NavID.homeNCID)
     }
     private func logout() {
@@ -52,6 +62,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 DispatchQueue.main.async {
                     let storyboard = UIStoryboard(name: NavID.storyboardID, bundle: nil)
                     // Setting root view controller from HomeViewController to LoginViewController
+                    print("Changing root view controller to login")
                     self?.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: NavID.loginNCID)
                 }
             case .failure(let error):
