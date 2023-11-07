@@ -11,7 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="nF9-Gm-wXj">
             <objects>
-                <viewController id="3UM-Mq-juD" customClass="LoginViewController" customModule="MyArchive" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" id="3UM-Mq-juD" customClass="LoginViewController" customModule="MyArchive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gOn-gR-tAm">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,16 +195,17 @@
             </objects>
             <point key="canvasLocation" x="1644" y="-19"/>
         </scene>
-        <!--Home-->
+        <!--Home View Controller-->
         <scene sceneID="r3G-MT-2pK">
             <objects>
-                <viewController id="vAd-1v-ztK" userLabel="Home View Controller" customClass="HomeViewController" customModule="MyArchive" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeViewController" id="vAd-1v-ztK" userLabel="Home View Controller" customClass="HomeViewController" customModule="MyArchive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SBg-nF-Gr7">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uup-LK-90M">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uup-LK-90M">
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="209" id="9rj-2x-8ra" customClass="StoryCell" customModule="MyArchive" customModuleProvider="target">
@@ -472,7 +473,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="FMD-jn-BZt">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="6v8-MT-VMd" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" automaticallyAdjustsScrollViewInsets="NO" id="6v8-MT-VMd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jK2-2s-DL2">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

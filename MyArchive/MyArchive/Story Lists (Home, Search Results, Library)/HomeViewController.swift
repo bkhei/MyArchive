@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
 
         // Setting table view data source
         //tableView.dataSource = self
+        print("Home view loaded!")
     }
     @IBAction func onLogoutTapped(_ sender: Any) {
         confirmLogoutAlert()
