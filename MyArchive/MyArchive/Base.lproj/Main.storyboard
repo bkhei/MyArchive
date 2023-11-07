@@ -16,18 +16,76 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pi9-Oq-4a7">
-                                <rect key="frame" x="155" y="409" width="84" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
-                                <connections>
-                                    <segue destination="6Bl-HA-J5B" kind="show" id="iyF-Is-ylP"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xnM-nW-nbp" userLabel="Main Stack View">
+                                <rect key="frame" x="20" y="253" width="353" height="265"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyArchive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpk-c3-hek">
+                                        <rect key="frame" x="83.666666666666686" y="0.0" width="186" height="64"/>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="40"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Vx4-LX-AuD" userLabel="Form Stack View">
+                                        <rect key="frame" x="5.3333333333333428" y="74" width="342.66666666666663" height="191"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="U9j-dx-s3p" userLabel="Field Stack View">
+                                                <rect key="frame" x="0.0" y="0.0" width="342.66666666666669" height="148.66666666666666"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M5g-Jg-thG" userLabel="username">
+                                                        <rect key="frame" x="0.0" y="0.0" width="342.66666666666669" height="64.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UxB-xE-wBF" userLabel="password">
+                                                        <rect key="frame" x="0.0" y="72.333333333333314" width="342.66666666666669" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uYG-wS-xde">
+                                                        <rect key="frame" x="0.0" y="114.3333333333333" width="342.66666666666669" height="34.333333333333329"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="filled" title="Login"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a31-61-Ypi" userLabel="Segue Stack View">
+                                                <rect key="frame" x="40" y="156.66666666666669" width="262.66666666666669" height="34.333333333333343"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUF-32-94k" userLabel="signupLabel">
+                                                        <rect key="frame" x="0.0" y="0.0" width="178.66666666666666" height="34.333333333333336"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pi9-Oq-4a7" userLabel="signup">
+                                                        <rect key="frame" x="178.66666666666669" y="0.0" width="84" height="34.333333333333336"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
+                                                        <connections>
+                                                            <segue destination="6Bl-HA-J5B" kind="show" id="iyF-Is-ylP"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="a31-61-Ypi" firstAttribute="leading" secondItem="Vx4-LX-AuD" secondAttribute="leading" constant="40" id="MhC-3E-7qO"/>
+                                            <constraint firstAttribute="trailing" secondItem="U9j-dx-s3p" secondAttribute="trailing" id="aWc-2q-XTe"/>
+                                            <constraint firstAttribute="trailing" secondItem="a31-61-Ypi" secondAttribute="trailing" constant="40" id="all-JW-Fz8"/>
+                                            <constraint firstItem="U9j-dx-s3p" firstAttribute="leading" secondItem="Vx4-LX-AuD" secondAttribute="leading" id="zUJ-Zh-O8s"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ekr-3E-8OV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xnM-nW-nbp" firstAttribute="top" relation="lessThanOrEqual" secondItem="ekr-3E-8OV" secondAttribute="top" constant="150" id="LnJ-zS-0Ug"/>
+                            <constraint firstItem="ekr-3E-8OV" firstAttribute="trailing" secondItem="xnM-nW-nbp" secondAttribute="trailing" constant="20" id="lWr-4h-OcK"/>
+                            <constraint firstItem="xnM-nW-nbp" firstAttribute="leading" secondItem="ekr-3E-8OV" secondAttribute="leading" constant="20" id="sOU-hg-sAG"/>
+                            <constraint firstItem="ekr-3E-8OV" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="xnM-nW-nbp" secondAttribute="bottom" constant="300" id="tPk-lt-OfV"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="R0G-Wa-ZJf"/>
                 </viewController>
