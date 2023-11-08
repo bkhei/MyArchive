@@ -37,7 +37,7 @@ class YourStoriesViewController: UIViewController {
          Getting stories created by the current user
          */
         // Queries Story instances, explicitly including the user property and sorted
-        let query = Story.query().include("user").order([.descending("createdAt")]).where("user" == User.current)
+        let query = Story.query().include("user").order([.descending("createdAt")]).where("user" == User.current?.username)
         // Finding and returning the stories
         query.find {
             [weak self] result in
