@@ -256,6 +256,7 @@
                                             <outlet property="coverImageView" destination="e1m-Is-kQj" id="P8t-ws-z69"/>
                                             <outlet property="descriptionLabel" destination="MFy-gD-Mu2" id="aMD-Ba-h4C"/>
                                             <outlet property="titleLabel" destination="ssl-bF-AzN" id="Bbz-2D-H3b"/>
+                                            <segue destination="Xpo-m8-FcI" kind="show" id="TIE-z0-7Tx"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -289,6 +290,7 @@
                         <viewLayoutGuide key="safeArea" id="Ua0-Kv-n4A"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="JuM-LU-Dd9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mn8-wr-KEs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -363,10 +365,35 @@
                     <view key="view" contentMode="scaleToFill" id="hQT-Pj-DUs">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Rly-yo-jjl">
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="YourStoryCell" rowHeight="138" id="86y-GT-uDV" customClass="YourStoryCell" customModule="MyArchive" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="138"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="86y-GT-uDV" id="Wo0-MM-fmi">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="138"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="u4s-cX-7Sd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="u4s-cX-7Sd" firstAttribute="bottom" secondItem="Rly-yo-jjl" secondAttribute="bottom" id="eE5-xU-zI4"/>
+                            <constraint firstItem="Rly-yo-jjl" firstAttribute="leading" secondItem="u4s-cX-7Sd" secondAttribute="leading" id="v1j-s5-toW"/>
+                            <constraint firstItem="u4s-cX-7Sd" firstAttribute="trailing" secondItem="Rly-yo-jjl" secondAttribute="trailing" id="x16-a4-GE0"/>
+                            <constraint firstItem="Rly-yo-jjl" firstAttribute="top" secondItem="u4s-cX-7Sd" secondAttribute="top" id="z7o-Zd-oFn"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4PC-ZP-jRu"/>
+                    <connections>
+                        <outlet property="tableView" destination="Rly-yo-jjl" id="7Or-Py-tjD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wPT-3f-f7a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
