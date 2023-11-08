@@ -117,6 +117,10 @@ A story-sharing app that lets users read and create their own stories.
 * Edit Overview Screen
 * Edit Chapter Screen
 
+## Build Progress
+### Milestone 2
+![Imgur](https://i.imgur.com/5BWyFSB.gif)
+
 ## Wireframes
 
 ![](https://hackmd.io/_uploads/H1QcGDEz6.jpg)
