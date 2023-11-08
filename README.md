@@ -41,7 +41,7 @@ A story-sharing app that lets users read and create their own stories.
 
 **Required Must-have Stories**
 
-- [ ] Users can create a profile and login
+- [X] Users can create a profile and login
 - [ ] Users can create a story
 - [ ] Users can view their own stories
 - [ ] Users can publish their created stories
