@@ -41,7 +41,7 @@ A story-sharing app that lets users read and create their own stories.
 
 **Required Must-have Stories**
 
-- [ ] Users can create a profile and login
+- [X] Users can create a profile and login
 - [ ] Users can create a story
 - [ ] Users can view their own stories
 - [ ] Users can publish their created stories
@@ -66,7 +66,7 @@ A story-sharing app that lets users read and create their own stories.
 
 ### 2. Screen Archetypes
 
-- [ ] Login/Sign Up Screen
+- [X] Login/Sign Up Screen
 * users can create a profile and login
 - [ ] Home Screen
 * users can view other users' stories
@@ -116,6 +116,10 @@ A story-sharing app that lets users read and create their own stories.
 - [ ] Write Screen
 * Edit Overview Screen
 * Edit Chapter Screen
+
+## Build Progress
+### Milestone 2
+![Imgur](https://i.imgur.com/5BWyFSB.gif)
 
 ## Wireframes
 

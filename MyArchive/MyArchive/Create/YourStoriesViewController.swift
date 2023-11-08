@@ -1,19 +1,16 @@
 //
-//  HomeViewController.swift
+//  YourStoriesViewController.swift
 //  MyArchive
 //
 //  Created by Yolanda Vega on 11/4/23.
 //
-//  NEEDS TESTING
 
 import UIKit
 import ParseSwift
 
-class HomeViewController: UIViewController {
-    // Table View Outlet
+class YourStoriesViewController: UIViewController {
+    // Outlets
     @IBOutlet weak var tableView: UITableView!
-    // Refresh control for pull-to-refresh functionality
-    private let refreshControl = UIRefreshControl()
     // Stories array, will be initialized in query function
     private var stories = [Story]() {
         didSet {
@@ -21,27 +18,13 @@ class HomeViewController: UIViewController {
             tableView.reloadData()
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Setting table view data source
         tableView.dataSource = self
-        tableView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(onPullToRefresh), for: .valueChanged)
-        print("Home view loaded!")
     }
-    @IBAction func onLogoutTapped(_ sender: Any) {
-        confirmLogoutAlert()
-    }
-    @objc private func onPullToRefresh() {
-        refreshControl.beginRefreshing()
-        queryStories {
-            [weak self] in
-            self?.refreshControl.endRefreshing()
-        }
-    }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         queryStories()
@@ -51,10 +34,10 @@ class HomeViewController: UIViewController {
          Creating a query to fetch stories
          Properties that are parse objects (User in this case) stored by reference in Parse DB, so need to be explicityly included
          Sorting stories in descending order based on creation date
-         Getting stories where isPublished is true
+         Getting stories created by the current user
          */
         // Queries Story instances, explicitly including the user property and sorted
-        let query = Story.query().include("user").order([.descending("createdAt")]).where("isPublished" == true)
+        let query = Story.query().include("user").order([.descending("createdAt")]).where("user" == User.current?.username)
         // Finding and returning the stories
         query.find {
             [weak self] result in
@@ -69,32 +52,15 @@ class HomeViewController: UIViewController {
             completion?()
         }
     }
-    
-}
-// Helper methods
-extension HomeViewController {
-    private func confirmLogoutAlert() {
-        let alertController = UIAlertController(title: "Log out of your account?", message: nil, preferredStyle: .alert)
-        let logOutAction = UIAlertAction(title: "Log Out", style: .destructive) {
-            _ in
-            // Posting logout notification
-            NotificationCenter.default.post(name: Notification.Name("logout"), object: nil)
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alertController.addAction(logOutAction)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true)
-    }
-}
 
-// Conforming view controller to UITableViewDataSource -- INCOMPLETE
-extension HomeViewController: UITableViewDataSource {
+}
+extension YourStoriesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "StoryCell", for: indexPath) as? StoryCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "YourStoryCell", for: indexPath) as? YourStoryCell else {
             return UITableViewCell()
         }
         cell.configure(with: stories[indexPath.row])
@@ -103,4 +69,3 @@ extension HomeViewController: UITableViewDataSource {
     
     
 }
-

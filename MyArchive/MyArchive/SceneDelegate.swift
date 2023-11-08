@@ -12,6 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private enum NavID {
         static let loginNCID = "LoginNavigationController"
         static let homeNCID = "HomeNavigationController"
+        static let tabBC = "tabBarController"
         static let storyboardID = "Main"
     }
 
@@ -46,10 +47,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     // Private login and logout functions
     private func login() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: NavID.storyboardID, bundle: nil)
         // Changing root view controller from LoginViewController to HomeViewController
         print("Changing root view controller to home")
-        self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "HomeNavigationController")
+        self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: NavID.tabBC)
     }
     private func logout() {
         // Logging out user (NOTE: User is a parse object), has access to logout() method
