@@ -66,7 +66,7 @@ A story-sharing app that lets users read and create their own stories.
 
 ### 2. Screen Archetypes
 
-- [ ] Login/Sign Up Screen
+- [X] Login/Sign Up Screen
 * users can create a profile and login
 - [ ] Home Screen
 * users can view other users' stories
