@@ -33,4 +33,6 @@ struct Chapter: ParseObject {
     var ACL: ParseACL?
     var originalData: Data?
     // Custom properties
+    var title: String?
+    var content: String?
 }
