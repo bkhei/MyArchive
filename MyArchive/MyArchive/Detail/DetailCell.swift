@@ -12,6 +12,7 @@ import AlamofireImage
 // Delegate protocol
 protocol DetailCellDelegate: AnyObject {
     func requestStoryProperty() -> Story
+    func reloadTable()
 }
 
 class DetailCell: UITableViewCell {
@@ -39,6 +40,36 @@ class DetailCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @IBAction func addLibraryTapped(_ sender: Any) {
+        // Checking whether in library or not
+        let inLibrary = checkLibrary(User.current!)
+        let story = delegate?.requestStoryProperty()
+        var currentUser = User.current!
+        // Add library button/gesture tapped
+        if (inLibrary == true) {
+            // already in library, tapped to remove
+            currentUser.library = currentUser.library.filter {$0 != story}
+        } else {
+            // Appending current story to current user's library array
+            currentUser.library.append(story!)
+        }
+        // Saving user with the updated library
+        currentUser.save {
+            [weak self] result in
+            
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let user):
+                    print("User saved! \(user)")
+                case .failure(let error):
+                    print("Save Error: \(error)")
+                }
+            }
+        }
+        // Reloading table view to update addLibrary button/gesture image
+        self.delegate?.reloadTable()
     }
 
     func configure(with story: Story)  {

@@ -1,5 +1,5 @@
 //
-//  SearchResultViewController.swift
+//  LibraryViewController.swift
 //  MyArchive
 //
 //  Created by Yolanda Vega on 11/4/23.
@@ -7,12 +7,17 @@
 
 import UIKit
 
-class SearchResultViewController: UIViewController {
+class LibraryViewController: UIViewController {
+    // story property
+    var stories: [Story]!
+    // table view outlet
+    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Setting table view data source
+        tableView.dataSource = self
     }
     
 

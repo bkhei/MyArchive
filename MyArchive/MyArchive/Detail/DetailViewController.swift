@@ -49,5 +49,7 @@ extension DetailViewController: UITableViewDataSource, DetailCellDelegate {
     func requestStoryProperty() -> Story {
         return story
     }
-    
+    func reloadTable() {
+        self.tableView.reloadData()
+    }
 }

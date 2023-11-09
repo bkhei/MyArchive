@@ -109,8 +109,6 @@
 				A98A07E52AF8743400123CC2 /* Detail */,
 				A98A07E62AF8743D00123CC2 /* Read */,
 				A98A07D22AF727A900123CC2 /* SearchViewController.swift */,
-				A98A07D42AF727BC00123CC2 /* SearchResultViewController.swift */,
-				A98A07D62AF727CF00123CC2 /* LibraryViewController.swift */,
 				A94464CC2AFB2FF00065ED5B /* Create */,
 				A98A07DA2AF7283100123CC2 /* EditDetailViewController.swift */,
 				A98A07DC2AF7284000123CC2 /* EditChapterViewController.swift */,
@@ -144,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				A98A07CC2AF7276F00123CC2 /* HomeViewController.swift */,
+				A98A07D42AF727BC00123CC2 /* SearchResultViewController.swift */,
+				A98A07D62AF727CF00123CC2 /* LibraryViewController.swift */,
 				A98A07E92AF87EC800123CC2 /* StoryCell.swift */,
 			);
 			path = "Story Lists (Home, Search Results, Library)";
