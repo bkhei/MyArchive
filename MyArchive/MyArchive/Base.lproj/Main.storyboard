@@ -218,7 +218,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="K71-na-J4R" userLabel="Main Stack View">
                                                     <rect key="frame" x="0.0" y="11" width="377" height="179"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minus" translatesAutoresizingMaskIntoConstraints="NO" id="e1m-Is-kQj">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e1m-Is-kQj">
                                                             <rect key="frame" x="0.0" y="0.0" width="115" height="179"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="115" id="Kaa-6O-Vmb"/>
@@ -550,7 +550,6 @@
         <image name="books.vertical.fill" catalog="system" width="128" height="110"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
-        <image name="minus" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

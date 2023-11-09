@@ -75,8 +75,8 @@ class HomeViewController: UIViewController {
         if let cell = sender as? UITableViewCell,
            let indexPath = tableView.indexPath(for: cell),
            let DVC = segue.destination as? DetailViewController {
-            let tappedMovie = stories[indexPath.row]
-            DVC.story = tappedMovie
+            let tappedStory = stories[indexPath.row]
+            DVC.story = tappedStory
         }
     }
     
