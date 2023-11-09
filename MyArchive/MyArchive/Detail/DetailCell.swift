@@ -9,14 +9,22 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
+// Delegate protocol
+protocol DetailCellDelegate: AnyObject {
+    func requestStoryProperty() -> Story
+}
+
 class DetailCell: UITableViewCell {
+    // Delegate
+    weak var delegate: DetailCellDelegate?
+    
     // Outlets
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var addLibraryImageView: UIImageView!
     @IBOutlet weak var readButton: UIButton!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabelL: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var genre1Label: UILabel!
     @IBOutlet weak var genre2Label: UILabel!
     @IBOutlet weak var genre3Label: UILabel!
@@ -54,22 +62,36 @@ class DetailCell: UITableViewCell {
         
         // Setting add library
         // If story is already in library, minus sign, if not in library, plus sign, to do this must access current user's library
-        let inLibrary = checkLibrary(with: User.current, with: story)
-        addLibraryImageView.image = UIImage(systemName: story.isPublished ? "book.fill" : "book.closed.fill")?.withRenderingMode(.alwaysTemplate)
+        let inLibrary = checkLibrary(User.current!)
+        addLibraryImageView.image = UIImage(systemName: inLibrary ? "minus.circle.fill" : "plus.circle.fill")?.withRenderingMode(.alwaysTemplate)
         addLibraryImageView.tintColor = story.isPublished ? .systemBlue : .tertiaryLabel
+        
+        // Setting Username
+        usernameLabel.text = story.user?.username
         
         // Setting title
         titleLabel.text = story.title
         
         // Setting description
         descriptionLabel.text = story.description
+        
+        // Setting category labels
+        // Stories may only one categories, if 2nd or 3rd is nill, fill label with empty string
+        genre1Label.text = story.categories?[0] ?? ""
+        genre2Label.text = story.categories?[1] ?? ""
+        genre3Label.text = story.categories?[2] ?? ""
     }
-    func checkLibrary(with user: User, with story: Story) {
-        for s in user.library {
-            if (story == s) {
-                return true
+    func checkLibrary(_ user: User) -> Bool {
+        let story = delegate?.requestStoryProperty()
+        if (user.library.isEmpty) {
+            return false
+        } else {
+            for s in user.library {
+                if (story == s) {
+                    return true
+                }
             }
+            return false
         }
-        return false
     }
 }
