@@ -40,6 +40,14 @@ class DetailCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    @IBAction func addLibraryTapped(_ sender: Any) {
+        // Add library button/gesture tapped
+        // Appending current story to current user's library array
+        let story = delegate?.requestStoryProperty()
+        var currentUser = User.current!
+        currentUser.library.append(story!)
+    }
 
     func configure(with story: Story)  {
         // Setting cover
