@@ -8,7 +8,8 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-
+    // Outlets
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
