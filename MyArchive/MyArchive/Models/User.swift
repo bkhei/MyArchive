@@ -22,6 +22,6 @@ struct User: ParseUser {
     var password: String?
     var authData: [String : [String : String]?]?
     // Custom properties
-    var library: [Story]?
+    var library: [Story] = []
     var pfpFile: ParseFile?
 }

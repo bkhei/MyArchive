@@ -8,6 +8,8 @@
 import UIKit
 
 class ReadViewController: UIViewController {
+    // story property
+    var story: Story!
 
     override func viewDidLoad() {
         super.viewDidLoad()
