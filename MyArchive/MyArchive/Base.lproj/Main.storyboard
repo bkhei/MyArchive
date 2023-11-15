@@ -513,12 +513,61 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="YourStoryCell" rowHeight="138" id="86y-GT-uDV" userLabel="Story Cell" customClass="YourStoryCell" customModule="MyArchive" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="138"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="YourStoryCell" rowHeight="253" id="86y-GT-uDV" userLabel="Story Cell" customClass="YourStoryCell" customModule="MyArchive" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="253"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="86y-GT-uDV" id="Wo0-MM-fmi">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="138"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="253"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vE6-RY-h3S" userLabel="Main Stack View">
+                                                    <rect key="frame" x="20" y="20" width="353" height="213"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Kb-Mi-CT3">
+                                                            <rect key="frame" x="0.0" y="0.0" width="115" height="179"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="179" id="047-pq-O4t"/>
+                                                                <constraint firstAttribute="width" constant="115" id="Ihv-NM-TT7"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="M2w-a2-bDC" userLabel="Info Stack View">
+                                                            <rect key="frame" x="123" y="0.0" width="230" height="68.333333333333329"/>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rGZ-cs-bhd" userLabel="Title">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="89" height="40"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7M-y7-KNS">
+                                                                            <rect key="frame" x="0.0" y="6.9999999999999982" width="41" height="26.333333333333329"/>
+                                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book.pages.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="x41-er-kCm">
+                                                                            <rect key="frame" x="49" y="-1.6666666666666679" width="40" height="42.666666666666671"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="40" id="9Ow-ib-t4U"/>
+                                                                                <constraint firstAttribute="height" constant="40" id="aVz-qE-z0U"/>
+                                                                            </constraints>
+                                                                        </imageView>
+                                                                    </subviews>
+                                                                </stackView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KFF-cy-GoW">
+                                                                    <rect key="frame" x="0.0" y="48" width="87.333333333333329" height="20.333333333333329"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="vE6-RY-h3S" secondAttribute="bottom" constant="20" id="Wgf-l5-jfb"/>
+                                                <constraint firstAttribute="trailing" secondItem="vE6-RY-h3S" secondAttribute="trailing" constant="20" id="XPd-9M-jQk"/>
+                                                <constraint firstItem="vE6-RY-h3S" firstAttribute="leading" secondItem="Wo0-MM-fmi" secondAttribute="leading" constant="20" id="mEd-j5-bFI"/>
+                                                <constraint firstItem="vE6-RY-h3S" firstAttribute="top" secondItem="Wo0-MM-fmi" secondAttribute="top" constant="20" id="scn-xZ-AKN"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
