@@ -23,6 +23,7 @@ class YourStoriesViewController: UIViewController {
         super.viewDidLoad()
 
         tableView.dataSource = self
+        print("Your Stories Loaded!")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -37,20 +38,25 @@ class YourStoriesViewController: UIViewController {
          Getting stories created by the current user
          */
         // Queries Story instances, explicitly including the user property and sorted
-        let query = Story.query().include("user").order([.descending("createdAt")]).where("user" == User.current?.username)
-        // Finding and returning the stories
-        query.find {
-            [weak self] result in
-            switch result {
-            case .success(let stories):
-                // Updating the local stories property with the fetched stories
-                self?.stories = stories
-            case .failure(let error):
-                print("Fetch failed: \(error)")
+        if let currentUser = User.current {
+            let userConstraint: QueryConstraint = containsString(key: "user", substring: currentUser.objectId ?? "")
+            let query = Story.query(userConstraint).include("user").order([.descending("createdAt")])
+            // Finding and returning the stories
+            query.find {
+                [weak self] result in
+                switch result {
+                case .success(let stories):
+                    // Updating the local stories property with the fetched stories
+                    self?.stories = stories
+                    print("Stories fetched!: \(stories)")
+                case .failure(let error):
+                    print("Fetch failed: \(error)")
+                }
+                // Completion handler, used to tell pull-to-refresh control to stop refreshing
+                completion?()
             }
-            // Completion handler, used to tell pull-to-refresh control to stop refreshing
-            completion?()
         }
+        
     }
 
 }
