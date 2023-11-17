@@ -10,6 +10,7 @@
 		A939503C2AF9E21600849FB6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A939503B2AF9E21600849FB6 /* LoginViewController.swift */; };
 		A94464CB2AFB2FE40065ED5B /* YourStoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94464CA2AFB2FE40065ED5B /* YourStoryCell.swift */; };
 		A94464CE2AFC80F20065ED5B /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94464CD2AFC80F20065ED5B /* DetailCell.swift */; };
+		A95E777D2B07FF680084CC0E /* EditDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E777C2B07FF680084CC0E /* EditDetailViewCell.swift */; };
 		A98A07AE2AF6DEC200123CC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98A07AD2AF6DEC200123CC2 /* AppDelegate.swift */; };
 		A98A07B02AF6DEC200123CC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98A07AF2AF6DEC200123CC2 /* SceneDelegate.swift */; };
 		A98A07B52AF6DEC200123CC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A98A07B32AF6DEC200123CC2 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		A939503B2AF9E21600849FB6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A94464CA2AFB2FE40065ED5B /* YourStoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourStoryCell.swift; sourceTree = "<group>"; };
 		A94464CD2AFC80F20065ED5B /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
+		A95E777C2B07FF680084CC0E /* EditDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDetailViewCell.swift; sourceTree = "<group>"; };
 		A98A07AA2AF6DEC200123CC2 /* MyArchive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyArchive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A98A07AD2AF6DEC200123CC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A98A07AF2AF6DEC200123CC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,15 @@
 			path = Create;
 			sourceTree = "<group>";
 		};
+		A95E777B2B07FF310084CC0E /* EditDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A98A07DA2AF7283100123CC2 /* EditDetailViewController.swift */,
+				A95E777C2B07FF680084CC0E /* EditDetailViewCell.swift */,
+			);
+			path = EditDetail;
+			sourceTree = "<group>";
+		};
 		A98A07A12AF6DEC200123CC2 = {
 			isa = PBXGroup;
 			children = (
@@ -110,7 +121,7 @@
 				A98A07E62AF8743D00123CC2 /* Read */,
 				A98A07D22AF727A900123CC2 /* SearchViewController.swift */,
 				A94464CC2AFB2FF00065ED5B /* Create */,
-				A98A07DA2AF7283100123CC2 /* EditDetailViewController.swift */,
+				A95E777B2B07FF310084CC0E /* EditDetail */,
 				A98A07DC2AF7284000123CC2 /* EditChapterViewController.swift */,
 				A98A07B32AF6DEC200123CC2 /* Main.storyboard */,
 				A98A07B62AF6DEC400123CC2 /* Assets.xcassets */,
@@ -250,6 +261,7 @@
 				A98A07CD2AF7276F00123CC2 /* HomeViewController.swift in Sources */,
 				A98A07D52AF727BC00123CC2 /* SearchResultViewController.swift in Sources */,
 				A94464CE2AFC80F20065ED5B /* DetailCell.swift in Sources */,
+				A95E777D2B07FF680084CC0E /* EditDetailViewCell.swift in Sources */,
 				A98A07DD2AF7284000123CC2 /* EditChapterViewController.swift in Sources */,
 				A98A07D32AF727A900123CC2 /* SearchViewController.swift in Sources */,
 				A98A07AE2AF6DEC200123CC2 /* AppDelegate.swift in Sources */,

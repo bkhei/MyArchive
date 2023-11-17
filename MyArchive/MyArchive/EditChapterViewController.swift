@@ -8,6 +8,7 @@
 import UIKit
 
 class EditChapterViewController: UIViewController {
+    var chapter: Chapter!
 
     override func viewDidLoad() {
         super.viewDidLoad()

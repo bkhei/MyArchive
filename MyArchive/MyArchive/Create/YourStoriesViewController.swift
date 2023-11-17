@@ -58,6 +58,16 @@ class YourStoriesViewController: UIViewController {
         }
         
     }
+    
+    // Prepare for segue and send data to edit detail view
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cell = sender as? UITableViewCell,
+           let indexPath = tableView.indexPath(for: cell),
+           let EDVC = segue.destination as? EditDetailViewController {
+            let tappedStory = stories[indexPath.row]
+            EDVC.story = tappedStory
+        }
+    }
 
 }
 extension YourStoriesViewController: UITableViewDataSource {
