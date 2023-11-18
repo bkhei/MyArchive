@@ -24,6 +24,7 @@ class YourStoriesViewController: UIViewController {
 
         tableView.dataSource = self
         print("Your Stories Loaded!")
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {

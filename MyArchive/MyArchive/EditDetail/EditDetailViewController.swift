@@ -32,6 +32,7 @@ class EditDetailViewController: UIViewController {
             story?.coverFile = imageFile
             return
         }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -52,13 +53,12 @@ extension EditDetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("On indexpath row: \(indexPath.row)")
         if indexPath.row == 0 {
             // Configure with story details, first cell
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "EditDetailCell", for: indexPath) as? EditDetailViewCell else {
                 return UITableViewCell()
             }
-            print("configuring row \(indexPath.row) with story: \(story)")
+            cell.delegate = self
             cell.configureDetail(with: story!)
             return cell
         } else {
@@ -66,7 +66,6 @@ extension EditDetailViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChapterCell", for: indexPath) as? EditDetailViewCell else {
                 return UITableViewCell()
             }
-            print("configuring row \(indexPath.row) with chapter:")
             cell.configureChapter(with: story!.chapters![indexPath.row - 1], with: indexPath.row)
             return cell
         }
@@ -74,4 +73,14 @@ extension EditDetailViewController: UITableViewDataSource {
     }
     
     
+}
+
+// Adopting Cell protocol
+extension EditDetailViewController: EditDetailCellDelegate {
+    func updateStory(_ newStory: Story) {
+        story = newStory
+    }
+    func reloadInfo() {
+        self.tableView.reloadData()
+    }
 }

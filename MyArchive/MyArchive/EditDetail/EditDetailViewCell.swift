@@ -8,21 +8,38 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import ParseSwift
+
+// Protocol to communicate with parent view controller EditDetail
+protocol EditDetailCellDelegate: AnyObject {
+    func updateStory(_ newStory: Story)
+    func reloadInfo()
+}
 
 class EditDetailViewCell: UITableViewCell {
+    // Delegate property
+    weak var delegate: EditDetailCellDelegate?
+    
     // Outlets
     // detail
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var summaryTextField: UITextField!
-    @IBOutlet weak var genre1PopUpMenu: UIButton!
-    @IBOutlet weak var genre2PopUpMenu: UIButton!
+    @IBOutlet weak var genre1Label: UILabel!
+    @IBOutlet weak var deleteGenreLabel1: UIButton!
+    @IBOutlet weak var genre2Label: UILabel!
+    @IBOutlet weak var deleteGenreLabel2: UIButton!
+    @IBOutlet weak var genre3Label: UILabel!
+    @IBOutlet weak var deleteGenreLabel3: UIButton!
     @IBOutlet weak var genre3PopUpMenu: UIButton!
     // chapters
     @IBOutlet weak var chapterNumberLabel: UILabel!
     @IBOutlet weak var chapterTitleLabel: UILabel!
     
     private var imageDataRequest: DataRequest?
+    
+    var localStory: Story? = nil
+    var tempCat: String = "None"
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,8 +51,55 @@ class EditDetailViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    private func getMenuState(_ genre: String) {
+    
+    func updateLocalStory() {
         
+    }
+    
+    @IBAction func deleteG1(_ sender: Any) {
+        if var genre = genre1Label.text, let index = localStory?.categories?.firstIndex(of: genre) {
+            localStory?.categories?.remove(at: index)
+            delegate?.updateStory(localStory!)
+            delegate?.reloadInfo()
+        } else {
+            print("No category to remove!")
+        }
+    }
+    @IBAction func deleteG2(_ sender: Any) {
+        if let genre = genre2Label.text,
+           let index = localStory?.categories?.firstIndex(of: genre){
+            localStory?.categories?.remove(at: index)
+            delegate?.updateStory(localStory!)
+            delegate?.reloadInfo()
+        } else {
+            print("No category to remove!")
+        }
+    }
+    @IBAction func deleteG3(_ sender: Any) {
+        if let genre = genre3Label.text,
+           let index = localStory?.categories?.firstIndex(of: genre){
+            localStory?.categories?.remove(at: index)
+            delegate?.updateStory(localStory!)
+            delegate?.reloadInfo()
+        } else {
+            print("No category to remove!")
+        }
+    }
+    @IBAction func addGenre(_ sender: Any) {
+        if let numCat = localStory?.categories?.count {
+            if numCat == 3 {
+                print("A story can only have a maximum of 3 categories!")
+            }else if tempCat == "None"{
+                print("No selection made!")
+            }else if let index = localStory?.categories?.firstIndex(of: tempCat) {
+                print("\(tempCat) already included!")
+            }else {
+                print("Adding category \(tempCat)")
+                localStory?.categories?.append(tempCat)
+                delegate?.updateStory(localStory!)
+                delegate?.reloadInfo()
+            }
+        }
     }
     
     func configureChapter(with chapter: Chapter, with num: Int) {
@@ -43,6 +107,17 @@ class EditDetailViewCell: UITableViewCell {
         chapterNumberLabel.text = String(num)
     }
     func configureDetail(with story: Story) {
+        // Setting up Pop-up buttons
+        let actionClosure = { (action: UIAction) in
+            self.tempCat = String(describing: action.title)
+        }
+        var menuElements: [UIMenuElement] = []
+        menuElements.append(UIAction(title: "None", handler: actionClosure))
+        for genre in Genres {
+            menuElements.append(UIAction(title: genre, handler: actionClosure))
+        }
+        genre3PopUpMenu.menu = UIMenu(options: .displayInline, children: menuElements)
+        
         // Setting cover
         // Getting cover file and url
         if let coverFile = story.coverFile,
@@ -63,8 +138,30 @@ class EditDetailViewCell: UITableViewCell {
         
         titleTextField.text = story.title
         summaryTextField.text = story.description
-        /*genre1PopUpMenu.title = story.categories?[0] ?? ""
-        genre2PopUpMenu.title = story.categories?[1] ?? ""
-        genre3PopUpMenu.title = story.categories?[2] ?? ""*/
+        
+        // Storing story categories in local array
+        var localCat = ["0", "0", "0"]
+        if let numCat = story.categories?.count {
+            // Filling local array with actual categories, if no catagory at a particular index, keep 0
+            if numCat != 1 && numCat != 0 {
+                for i in 0...numCat-1 {
+                    localCat[i] = story.categories![i]
+                }
+            } else if numCat == 1 {
+                localCat[0] = story.categories![0]
+            }
+            for i in 0...localCat.count-1 {
+                if localCat[i] == "0" {
+                    // if there's a 0, means no category, make empty
+                    localCat[i] = ""
+                }
+            }
+        }
+        
+        genre1Label.text = localCat[0]
+        genre2Label.text = localCat[1]
+        genre3Label.text = localCat[2]
+        
+        localStory = story
     }
 }
