@@ -660,7 +660,7 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Edit Summary" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Shw-Pe-H3V">
+                                                                <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Edit Summary" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Shw-Pe-H3V">
                                                                     <rect key="frame" x="0.0" y="31" width="323" height="12"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits"/>
@@ -843,13 +843,16 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6t-fA-rxA">
-                                                            <rect key="frame" x="75" y="0.0" width="8.3333333333333286" height="44"/>
+                                                            <rect key="frame" x="75" y="0.0" width="20" height="44"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="ebE-DF-I3B"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAM-q7-f4R">
-                                                            <rect key="frame" x="93.333333333333357" y="0.0" width="209.66666666666663" height="44"/>
+                                                            <rect key="frame" x="105" y="0.0" width="198" height="44"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -881,7 +884,13 @@
                             <constraint firstItem="Iaa-bf-qb0" firstAttribute="bottom" secondItem="EKX-Te-ZcN" secondAttribute="bottom" id="lVY-rV-tE6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="kUJ-4b-X5L"/>
+                    <navigationItem key="navigationItem" id="kUJ-4b-X5L">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="7aH-RJ-pRn">
+                            <connections>
+                                <action selector="didTapSave:" destination="XWd-fG-BHo" id="dqx-ne-Jkx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="EKX-Te-ZcN" id="T5o-uI-wXe"/>
                     </connections>

@@ -41,7 +41,8 @@ class YourStoriesViewController: UIViewController {
         // Queries Story instances, explicitly including the user property and sorted
         if let currentUser = User.current {
             let userConstraint: QueryConstraint = containsString(key: "user", substring: currentUser.objectId ?? "")
-            let query = Story.query(userConstraint).include("user").order([.descending("createdAt")])
+            // Including chapters with user because the result of this will also be passed onto edit detail which needs chapter information
+            let query = Story.query(userConstraint).include("user").include("chapters").order([.descending("createdAt")])
             // Finding and returning the stories
             query.find {
                 [weak self] result in

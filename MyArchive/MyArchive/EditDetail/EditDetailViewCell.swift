@@ -16,7 +16,7 @@ protocol EditDetailCellDelegate: AnyObject {
     func reloadInfo()
 }
 
-class EditDetailViewCell: UITableViewCell {
+class EditDetailViewCell: UITableViewCell, UITextFieldDelegate {
     // Delegate property
     weak var delegate: EditDetailCellDelegate?
     
@@ -52,8 +52,22 @@ class EditDetailViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func updateLocalStory() {
-        
+    func textFieldDidEndEditing(_ tf: UITextField) {
+        // Focus removed
+        print("Focus removed")
+        let newText = tf.text
+        print("New Text: \(newText)")
+        if tf.tag == 0 {
+            // title text field
+            localStory?.title = newText
+            delegate?.updateStory(localStory!)
+            print("New title: \(localStory?.title)")
+        } else if tf.tag == 1 {
+            // Summary text field
+            localStory?.description = newText
+            delegate?.updateStory(localStory!)
+            print("New title: \(localStory?.title)")
+        }
     }
     
     @IBAction func deleteG1(_ sender: Any) {
@@ -102,8 +116,9 @@ class EditDetailViewCell: UITableViewCell {
         }
     }
     
-    func configureChapter(with chapter: Chapter, with num: Int) {
-        chapterTitleLabel.text = chapter.title
+    func configureChapter(with title: String, with num: Int) {
+        print("Chapter Info: \(title)")
+        chapterTitleLabel.text = title
         chapterNumberLabel.text = String(num)
     }
     func configureDetail(with story: Story) {
