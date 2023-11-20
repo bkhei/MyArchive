@@ -7,6 +7,7 @@
 
 import UIKit
 import ParseSwift
+import PhotosUI
 
 class EditDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -53,6 +54,25 @@ class EditDetailViewController: UIViewController {
                     print("Story saved! \(story)")
                 case .failure(let error):
                     print("Failed to save story: \(error)")
+                }
+            }
+        }
+    }
+    
+    // pick image action functions
+    @IBAction func didTapCover(_ sender: UITapGestureRecognizer) {
+        if let tappedIMG = sender.view as? UIImageView {
+            let location = sender.location(in: tableView)
+            if let indexPath = tableView.indexPathForRow(at: location) {
+                // Accessing the cell using the indexPath
+                if let cell = tableView.cellForRow(at: indexPath) as? EditDetailViewCell {
+                    var config = PHPickerConfiguration()
+                    config.filter = .images
+                    config.preferredAssetRepresentationMode = .automatic
+                    config.selectionLimit = 1
+                    let picker = PHPickerViewController(configuration: config)
+                    picker.delegate = cell
+                    present(picker, animated: true)
                 }
             }
         }

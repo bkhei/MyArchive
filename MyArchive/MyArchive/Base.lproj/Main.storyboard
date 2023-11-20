@@ -621,12 +621,16 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0iY-jF-CtV" userLabel="Main Stack View">
                                                     <rect key="frame" x="15" y="15" width="363" height="473"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I5d-Of-ePi" userLabel="Cover Image">
+                                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I5d-Of-ePi" userLabel="Cover Image">
                                                             <rect key="frame" x="106.66666666666669" y="0.0" width="150" height="225"/>
+                                                            <gestureRecognizers/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="225" id="CCD-79-TGI"/>
                                                                 <constraint firstAttribute="width" constant="150" id="aBx-n0-r2a"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <outletCollection property="gestureRecognizers" destination="MZP-Tw-Igs" appends="YES" id="TW9-tx-WTI"/>
+                                                            </connections>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="Kbr-1V-5OI" userLabel="Title Stack View">
                                                             <rect key="frame" x="20" y="235" width="323" height="65"/>
@@ -896,6 +900,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbB-i9-DE1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="MZP-Tw-Igs">
+                    <connections>
+                        <action selector="didTapCover:" destination="XWd-fG-BHo" id="Q2M-Fl-hsH"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1643.5114503816794" y="2667.605633802817"/>
         </scene>

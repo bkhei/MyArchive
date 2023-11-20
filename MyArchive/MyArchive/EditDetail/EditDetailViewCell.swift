@@ -9,6 +9,7 @@ import UIKit
 import Alamofire
 import AlamofireImage
 import ParseSwift
+import PhotosUI
 
 // Protocol to communicate with parent view controller EditDetail
 protocol EditDetailCellDelegate: AnyObject {
@@ -16,11 +17,11 @@ protocol EditDetailCellDelegate: AnyObject {
     func reloadInfo()
 }
 
-class EditDetailViewCell: UITableViewCell, UITextFieldDelegate {
+class EditDetailViewCell: UITableViewCell, UITextFieldDelegate, PHPickerViewControllerDelegate {
     // Delegate property
     weak var delegate: EditDetailCellDelegate?
     
-    // Outlets
+    // OUTLETS
     // detail
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var titleTextField: UITextField!
@@ -36,7 +37,9 @@ class EditDetailViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var chapterNumberLabel: UILabel!
     @IBOutlet weak var chapterTitleLabel: UILabel!
     
+    // Image variables
     private var imageDataRequest: DataRequest?
+    private var selectedIMG: UIImage?
     
     var localStory: Story? = nil
     var tempCat: String = "None"
@@ -52,6 +55,38 @@ class EditDetailViewCell: UITableViewCell, UITextFieldDelegate {
         // Configure the view for the selected state
     }
     
+    // Conforming to PHPickerViewControllerDelegate
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        guard let provider = results.first?.itemProvider,
+              provider.canLoadObject(ofClass: UIImage.self) else {return}
+        provider.loadObject(ofClass: UIImage.self) {
+            [weak self] object, error in
+            guard let image = object as? UIImage else {
+                // Can't cast returned object to a UIImage
+                print("Can't cast returned object")
+                return
+            }
+            
+            if let error = error {
+                print("Error! \(error)")
+                return
+            } else {
+                // Saving to localStory, must create a parse file from it
+                // Unwrapping optional picked Image
+                let imageData = image.jpegData(compressionQuality: 0.1)
+                // Creating a parse file by providing a name and passing in the image data
+                let imageFile = ParseFile(name: "image.jpg", data: imageData!)
+                DispatchQueue.main.async {
+                    self?.coverImageView.image = image
+                    self?.selectedIMG = image
+                    self?.localStory?.coverFile = imageFile
+                }
+            }
+        }
+    }
+    
+    // Get changes from edited text fields (title, summary)
     func textFieldDidEndEditing(_ tf: UITextField) {
         // Focus removed
         print("Focus removed")
@@ -70,6 +105,7 @@ class EditDetailViewCell: UITableViewCell, UITextFieldDelegate {
         }
     }
     
+    // Get changes from edited buttons (categories)
     @IBAction func deleteG1(_ sender: Any) {
         if var genre = genre1Label.text, let index = localStory?.categories?.firstIndex(of: genre) {
             localStory?.categories?.remove(at: index)
@@ -105,7 +141,7 @@ class EditDetailViewCell: UITableViewCell, UITextFieldDelegate {
                 print("A story can only have a maximum of 3 categories!")
             }else if tempCat == "None"{
                 print("No selection made!")
-            }else if let index = localStory?.categories?.firstIndex(of: tempCat) {
+            }else if (localStory?.categories?.firstIndex(of: tempCat)) != nil {
                 print("\(tempCat) already included!")
             }else {
                 print("Adding category \(tempCat)")
@@ -116,6 +152,7 @@ class EditDetailViewCell: UITableViewCell, UITextFieldDelegate {
         }
     }
     
+    // Configure cell functions
     func configureChapter(with title: String, with num: Int) {
         print("Chapter Info: \(title)")
         chapterTitleLabel.text = title
