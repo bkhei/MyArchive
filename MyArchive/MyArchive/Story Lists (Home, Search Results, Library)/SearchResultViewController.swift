@@ -23,15 +23,15 @@ class SearchResultViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // Prepare for segue and send data to detail view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let cell = sender as? UITableViewCell,
+           let indexPath = tableView.indexPath(for: cell),
+           let DVC = segue.destination as? DetailViewController {
+            let tappedStory = stories[indexPath.row]
+            DVC.story = tappedStory
+        }
     }
-    */
 
 }
 // Conforming ViewController to table view data source
