@@ -22,22 +22,7 @@ class EditDetailViewController: UIViewController {
         super.viewDidLoad()
 
         tableView.dataSource = self
-        
-        // Check if it's a new story or an existing story
-        guard story != nil else {
-            // if story is nil (a new story), create new story, chapter list/array, and cover
-            story = Story()
-            story.chapters = []
-            guard let image = UIImage(named: "DefaultCover"),
-                  // Create and compress image data (jpeg) from UIImage
-                  let imageData = image.jpegData(compressionQuality: 0.1) else {
-                    return
-            }
-            // Create a Parse File by providing a name and passing in the image data
-            let imageFile = ParseFile(name: "image.jpg", data: imageData)
-            story.coverFile = imageFile
-            return
-        }
+        print("Story Passed: \(story)")
     }
     
     override func viewWillAppear(_ animated: Bool) {

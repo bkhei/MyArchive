@@ -590,7 +590,13 @@
                             <constraint firstItem="Rly-yo-jjl" firstAttribute="top" secondItem="u4s-cX-7Sd" secondAttribute="top" id="z7o-Zd-oFn"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4PC-ZP-jRu"/>
+                    <navigationItem key="navigationItem" id="4PC-ZP-jRu">
+                        <barButtonItem key="rightBarButtonItem" title="New Story" id="JI9-ud-2Bm">
+                            <connections>
+                                <segue destination="XWd-fG-BHo" kind="show" id="fNz-i0-SsH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Rly-yo-jjl" id="7Or-Py-tjD"/>
                     </connections>
@@ -1059,6 +1065,9 @@
             <point key="canvasLocation" x="-31.297709923664122" y="-19.014084507042256"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="fNz-i0-SsH"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="book.pages.fill" catalog="system" width="107" height="128"/>
         <image name="books.vertical.fill" catalog="system" width="128" height="110"/>

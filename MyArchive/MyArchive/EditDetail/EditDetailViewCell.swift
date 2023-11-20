@@ -101,7 +101,7 @@ class EditDetailViewCell: UITableViewCell, UITextFieldDelegate, PHPickerViewCont
             // Summary text field
             localStory?.description = newText
             delegate?.updateStory(localStory!)
-            print("New title: \(localStory?.title)")
+            print("New summary: \(localStory?.description)")
         }
     }
     
