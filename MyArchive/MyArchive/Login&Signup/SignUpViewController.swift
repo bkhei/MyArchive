@@ -37,6 +37,7 @@ class SignUpViewController: UIViewController {
         newUser.username = username
         newUser.email = email
         newUser.password = password
+        newUser.library = []
         newUser.signup {
             [weak self] result in
             
