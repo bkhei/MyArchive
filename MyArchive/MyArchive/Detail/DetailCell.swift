@@ -107,10 +107,27 @@ class DetailCell: UITableViewCell {
         descriptionLabel.text = story.description
         
         // Setting category labels
-        // Stories may only one categories, if 2nd or 3rd is nill, fill label with empty string
-        genre1Label.text = story.categories?[0] ?? ""
-        genre2Label.text = story.categories?[1] ?? ""
-        genre3Label.text = story.categories?[2] ?? ""
+        // Storing story categories in local array
+        var localCat = ["0", "0", "0"]
+        if let numCat = story.categories?.count {
+            // Filling local array with actual categories, if no catagory at a particular index, keep 0
+            if numCat != 1 && numCat != 0 {
+                for i in 0...numCat-1 {
+                    localCat[i] = story.categories![i]
+                }
+            } else if numCat == 1 {
+                localCat[0] = story.categories![0]
+            }
+            for i in 0...localCat.count-1 {
+                if localCat[i] == "0" {
+                    // if there's a 0, means no category, make empty
+                    localCat[i] = ""
+                }
+            }
+        }
+        genre1Label.text = localCat[0]
+        genre2Label.text = localCat[1]
+        genre3Label.text = localCat[2]
     }
     func checkLibrary(_ user: User) -> Bool {
         let story = delegate?.requestStoryProperty()

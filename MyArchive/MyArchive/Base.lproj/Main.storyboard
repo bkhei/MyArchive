@@ -219,7 +219,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="K71-na-J4R" userLabel="Main Stack View">
                                                     <rect key="frame" x="0.0" y="11" width="377" height="179"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e1m-Is-kQj">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultCover" translatesAutoresizingMaskIntoConstraints="NO" id="e1m-Is-kQj">
                                                             <rect key="frame" x="0.0" y="0.0" width="115" height="179"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="115" id="Kaa-6O-Vmb"/>
@@ -303,7 +303,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="VY2-ss-qcZ" userLabel="Main Stack View">
                                                     <rect key="frame" x="35" y="26" width="323" height="735"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="adE-fp-9k0" userLabel="coverImageView">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultCover" translatesAutoresizingMaskIntoConstraints="NO" id="adE-fp-9k0" userLabel="coverImageView">
                                                             <rect key="frame" x="86.666666666666686" y="0.0" width="150" height="225"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="150" id="AOU-Kd-llH"/>
@@ -524,7 +524,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vE6-RY-h3S" userLabel="Main Stack View">
                                                     <rect key="frame" x="20" y="20" width="353" height="213"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Kb-Mi-CT3">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultCover" translatesAutoresizingMaskIntoConstraints="NO" id="3Kb-Mi-CT3">
                                                             <rect key="frame" x="0.0" y="0.0" width="115" height="179"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="179" id="047-pq-O4t"/>
@@ -627,7 +627,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0iY-jF-CtV" userLabel="Main Stack View">
                                                     <rect key="frame" x="15" y="15" width="363" height="473"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I5d-Of-ePi" userLabel="Cover Image">
+                                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultCover" translatesAutoresizingMaskIntoConstraints="NO" id="I5d-Of-ePi" userLabel="Cover Image">
                                                             <rect key="frame" x="106.66666666666669" y="0.0" width="150" height="225"/>
                                                             <gestureRecognizers/>
                                                             <constraints>
@@ -895,13 +895,25 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kUJ-4b-X5L">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="7aH-RJ-pRn">
+                        <centerItemGroups>
+                            <barButtonItemGroup customizationDisposition="fixed" id="EXR-sd-cb1">
+                                <barButtonItems>
+                                    <barButtonItem title="Save" id="Tzg-jx-cep">
+                                        <connections>
+                                            <action selector="didTapSave:" destination="XWd-fG-BHo" id="1rH-ev-vRg"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </barButtonItems>
+                            </barButtonItemGroup>
+                        </centerItemGroups>
+                        <barButtonItem key="rightBarButtonItem" title="Publish" id="fPO-Tg-b4f">
                             <connections>
-                                <action selector="didTapSave:" destination="XWd-fG-BHo" id="dqx-ne-Jkx"/>
+                                <action selector="didTapPublish:" destination="XWd-fG-BHo" id="4a3-K4-Ojg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="publishButton" destination="fPO-Tg-b4f" id="1MP-kf-an7"/>
                         <outlet property="tableView" destination="EKX-Te-ZcN" id="T5o-uI-wXe"/>
                     </connections>
                 </viewController>
@@ -1069,6 +1081,7 @@
         <segue reference="fNz-i0-SsH"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="DefaultCover" width="512" height="800"/>
         <image name="book.pages.fill" catalog="system" width="107" height="128"/>
         <image name="books.vertical.fill" catalog="system" width="128" height="110"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>

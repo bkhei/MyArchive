@@ -11,6 +11,7 @@ import PhotosUI
 
 class EditDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var publishButton: UIBarButtonItem!
     var story: Story!
     var chapters = [Chapter] () {
         didSet {
@@ -23,13 +24,34 @@ class EditDetailViewController: UIViewController {
 
         tableView.dataSource = self
         print("Story Passed: \(story)")
+        
+        // Set the publish button to "Publish" or "Unpublish"
+        publishButton.title = story.isPublished ? "Unpublish" : "Publish"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         queryChapters()
     }
+    // Navigation Bar Button Functions
     @IBAction func didTapSave(_ sender: Any) {
+        story.save {
+            [weak self] result in
+            
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let story):
+                    print("Story saved! \(story)")
+                case .failure(let error):
+                    print("Failed to save story: \(error)")
+                }
+            }
+        }
+    }
+    @IBAction func didTapPublish(_ sender: Any) {
+        // Will modify isPublished property and save automatically
+        story.isPublished = story.isPublished ? false : true
+        publishButton.title = story.isPublished ? "Unpublish" : "Publish"
         story.save {
             [weak self] result in
             
@@ -101,7 +123,7 @@ class EditDetailViewController: UIViewController {
                 completion?()
             }
         }
-    }//
+    }
 }
 // Conforming view controller to table view data source
 extension EditDetailViewController: UITableViewDataSource {
