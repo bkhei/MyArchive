@@ -8,7 +8,7 @@
 import UIKit
 
 protocol EditChapterViewControllerDelegate: AnyObject {
-    func addChapter(_ chapter: Chapter)
+    func addChapter(with chapter: Chapter)
 }
 
 class EditChapterViewController: UIViewController {
@@ -35,28 +35,29 @@ class EditChapterViewController: UIViewController {
             self.chapter.content = cell.contentTextView.text
         }
         
-        // Check if the given chapter is an existing chapter or new chapter
-        if chapIndex == nil {
-            // chapIndex is null, no chapIndex passed because chapter is new
-            // Append chapter to the local story in EditDetail
-            self.delegate?.addChapter(chapter)
+        // Saving the local chapter instance to db
+        chapter.save {
+            [weak self] result in
             
-        } else {
-            // chapIndex exists, so chapter exists. Save chapter changes
-            // Saving the local chapter instance to db
-            chapter.save {
-                [weak self] result in
-                
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let chapter):
-                        print("Chapter saved! \(chapter)")
-                    case .failure(let error):
-                        print("Failed to save story: \(error)")
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let chapter):
+                    print("Chapter saved! \(chapter)")
+                    // Check if the given chapter is an existing chapter or new chapter
+                    if self?.chapIndex == nil {
+                        print("\n Chapter is new! Adding to story")
+                        // chapIndex is null, no chapIndex passed because chapter is new
+                        // Append chapter to the local story in EditDetail
+                        self?.delegate?.addChapter(with: chapter)
+                        print("CHAPTER ADDED")
                     }
+                case .failure(let error):
+                    print("Failed to save story: \(error)")
                 }
             }
         }
+        
+        
     }
 }
 // Conforming to table view data source

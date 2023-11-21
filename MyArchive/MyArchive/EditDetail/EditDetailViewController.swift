@@ -99,6 +99,7 @@ class EditDetailViewController: UIViewController {
             // Create new chapter and send to EditChapter
             var newChapter = Chapter()
             ECVC.chapter = newChapter
+            ECVC.delegate = self
         }
     }
     // NEEDS FIXING, FUNCTIONAL WITHOUT THIS
@@ -120,10 +121,10 @@ class EditDetailViewController: UIViewController {
             query.find {
                 [weak self] result in
                 switch result {
-                case .success(let chapterss):
+                case .success(let chapters):
                     // Updating the local stories property with the fetched stories
-                    self?.chapters = chapterss
-                    print("Chapter 1 fetched!: \(self!.chapters[0])")
+                    self?.chapters = chapters
+                    print("Chapter 1 fetched!: \(self!.chapters)")
                 case .failure(let error):
                     print("Fetch failed: \(error)")
                 }
@@ -180,9 +181,10 @@ extension EditDetailViewController: EditDetailCellDelegate {
 }
 // Adopting EditChapter protocol
 extension EditDetailViewController: EditChapterViewControllerDelegate {
-    func addChapter(_ chapter: Chapter) {
+    func addChapter(with chapter: Chapter) {
         // Appending chapter
         story.chapters?.append(chapter)
+        print("\n Appending chapter! \(story.chapters)")
         // Saving story to db with new chapter
         story.save {
             [weak self] result in

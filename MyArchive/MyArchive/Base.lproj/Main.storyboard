@@ -906,6 +906,11 @@
                                             <action selector="didTapSave:" destination="XWd-fG-BHo" id="1rH-ev-vRg"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem title="Add Chapter" id="ERL-St-zSD">
+                                        <connections>
+                                            <segue destination="ler-Y1-hTE" kind="show" id="4UX-6J-DP5"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </barButtonItems>
                             </barButtonItemGroup>
                         </centerItemGroups>
@@ -1133,6 +1138,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="xqT-sg-oMz"/>
         <segue reference="fNz-i0-SsH"/>
     </inferredMetricsTieBreakers>
     <resources>
