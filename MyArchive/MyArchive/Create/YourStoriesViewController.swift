@@ -25,13 +25,6 @@ class YourStoriesViewController: UIViewController {
         tableView.dataSource = self
         print("Your Stories Loaded!")
         
-        
-        
-        //TEMPORARY, SETTING USER LIBRARIES
-        if var user = User.current {
-            user.library = []
-            print("New Library Set! \(user.library)")
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

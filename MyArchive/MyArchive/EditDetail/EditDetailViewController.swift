@@ -89,8 +89,16 @@ class EditDetailViewController: UIViewController {
         if let cell = sender as? UITableViewCell,
            let indexPath = tableView.indexPath(for: cell),
            let ECVC = segue.destination as? EditChapterViewController {
-            let tappedChapter = story.chapters![indexPath.row - 1]
+            let i = indexPath.row - 1
+            let tappedChapter = chapters[i]
             ECVC.chapter = tappedChapter
+            ECVC.chapIndex = i
+        }
+        if let btn = sender as? UIBarButtonItem, 
+            let ECVC = segue.destination as? EditChapterViewController {
+            // Create new chapter and send to EditChapter
+            var newChapter = Chapter()
+            ECVC.chapter = newChapter
         }
     }
     // NEEDS FIXING, FUNCTIONAL WITHOUT THIS
@@ -107,7 +115,7 @@ class EditDetailViewController: UIViewController {
             for ch in story.chapters! {
                 chapterIDS?.append(ch.objectId!)
             }
-            let query = Chapter.query(containedIn(key: "objectId", array: chapterIDS!)).include("chapters")
+            let query = Chapter.query(containedIn(key: "objectId", array: chapterIDS!)).include("chapters").order([.ascending("createdAt")])
             // Finding and returning the stories
             query.find {
                 [weak self] result in
@@ -115,7 +123,7 @@ class EditDetailViewController: UIViewController {
                 case .success(let chapterss):
                     // Updating the local stories property with the fetched stories
                     self?.chapters = chapterss
-                    print("Stories fetched!: \(self!.chapters)")
+                    print("Chapter 1 fetched!: \(self!.chapters[0])")
                 case .failure(let error):
                     print("Fetch failed: \(error)")
                 }
@@ -147,12 +155,11 @@ extension EditDetailViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChapterCell", for: indexPath) as? EditDetailViewCell else {
                 return UITableViewCell()
             }
-            var chapterTitle = "Default"
+            var chapterTitle = Chapter(title: "Default", content: "Default")
             if chapters != nil && chapters.count != 0 {
-                if let chapTitle = chapters[indexPath.row - 1].title {
-                    print("Chapter title: \(chapTitle)")
-                    chapterTitle = chapTitle
-                }
+                let chapTitle = chapters[indexPath.row - 1]
+                print("Chapter title: \(chapTitle)")
+                chapterTitle = chapTitle
             }
             cell.configureChapter(with: chapterTitle, with: indexPath.row)
             return cell
@@ -162,7 +169,6 @@ extension EditDetailViewController: UITableViewDataSource {
     
     
 }
-
 // Adopting Cell protocol
 extension EditDetailViewController: EditDetailCellDelegate {
     func updateStory(_ newStory: Story) {
@@ -170,5 +176,25 @@ extension EditDetailViewController: EditDetailCellDelegate {
     }
     func reloadInfo() {
         self.tableView.reloadData()
+    }
+}
+// Adopting EditChapter protocol
+extension EditDetailViewController: EditChapterViewControllerDelegate {
+    func addChapter(_ chapter: Chapter) {
+        // Appending chapter
+        story.chapters?.append(chapter)
+        // Saving story to db with new chapter
+        story.save {
+            [weak self] result in
+            
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let story):
+                    print("Story saved! \(story)")
+                case .failure(let error):
+                    print("Failed to save story: \(error)")
+                }
+            }
+        }
     }
 }

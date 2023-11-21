@@ -153,9 +153,9 @@ class EditDetailViewCell: UITableViewCell, UITextFieldDelegate, PHPickerViewCont
     }
     
     // Configure cell functions
-    func configureChapter(with title: String, with num: Int) {
-        print("Chapter Info: \(title)")
-        chapterTitleLabel.text = title
+    func configureChapter(with chap: Chapter, with num: Int) {
+        print("Chapter Info: \(chap)")
+        chapterTitleLabel.text = chap.title
         chapterNumberLabel.text = String(num)
     }
     func configureDetail(with story: Story) {
