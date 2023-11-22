@@ -67,13 +67,10 @@ class EditDetailViewController: UIViewController {
     }
     
     @IBAction func onViewTapped(_ sender: Any) {
-        if let cell = sender as? UITableViewCell,
-           let indexPath = tableView.indexPath(for: cell),
-           indexPath.row == 0 {
-            
-        }
         print("Row 0 tapped, ending editing")
         view.endEditing(true)
+        let indexPath = IndexPath(row: 0, section: 0)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // pick image action functions

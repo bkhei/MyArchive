@@ -28,6 +28,8 @@ class EditChapterViewController: UIViewController {
     
     @IBAction func onViewTapped(_ sender: Any) {
         view.endEditing(true)
+        let indexPath = IndexPath(row: 0, section: 0)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     @IBAction func didTapSave(_ sender: Any) {
