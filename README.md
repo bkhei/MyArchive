@@ -125,7 +125,7 @@ A story-sharing app that lets users read and create their own stories.
 ![Imgur](https://imgur.com/et27fzl.gif)
 ### Demo
 
-[![Demo for MS3]((https://youtu.be/exfssOHCYo4)
+(https://youtu.be/exfssOHCYo4)
 
 ## Wireframes
 
