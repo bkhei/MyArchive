@@ -1008,6 +1008,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="kt9-rv-3Cf" secondAttribute="trailing" constant="20" id="wVl-dU-FRt"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="contentTextView" destination="UHE-oE-vMs" id="RKB-wd-fK3"/>
                                             <outlet property="titleTextField" destination="0f2-jU-MLc" id="RFa-Pg-XM5"/>
@@ -1025,6 +1026,9 @@
                             <constraint firstItem="VTu-Lb-aHK" firstAttribute="top" secondItem="Yhe-8D-4kc" secondAttribute="top" id="pc5-fb-5os"/>
                             <constraint firstItem="Yhe-8D-4kc" firstAttribute="bottom" secondItem="VTu-Lb-aHK" secondAttribute="bottom" id="uYU-rU-jHA"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="FlD-DW-ePg" appends="YES" id="pdA-gT-HZt"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="xQk-z1-rIT">
                         <centerItemGroups>
@@ -1044,9 +1048,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H1v-a1-y05" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="4kf-B0-By3">
+                <tapGestureRecognizer id="FlD-DW-ePg">
                     <connections>
-                        <action selector="onViewTapped:" destination="ler-Y1-hTE" id="C96-WL-LoY"/>
+                        <action selector="onViewTapped:" destination="ler-Y1-hTE" id="MMZ-Ds-sqU"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
