@@ -122,7 +122,7 @@ A story-sharing app that lets users read and create their own stories.
 ![Imgur](https://i.imgur.com/5BWyFSB.gif)
 
 ### Milestone 3
-![MS3 Gif](https://imgur.com/a/VJSUUR4)
+[Imgur](https://imgur.com/et27fzl)
 ### Demo
 ![Demo 1](https://youtu.be/exfssOHCYo4)
 
