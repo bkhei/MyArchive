@@ -1,20 +1,22 @@
 //
-//  StoryCell.swift
+//  YourStoryCell.swift
 //  MyArchive
 //
-//  Created by Yolanda Vega on 11/5/23.
+//  Created by Yolanda Vega on 11/7/23.
 //
 
 import UIKit
 import Alamofire
 import AlamofireImage
 
-class StoryCell: UITableViewCell {
+class YourStoryCell: UITableViewCell {
+    // Outlets -- NOT CONNECTED YET
     @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var isPublishedImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    private var imageDataRequest: DataRequest?
     
+    private var imageDataRequest: DataRequest?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -45,11 +47,15 @@ class StoryCell: UITableViewCell {
                }
         }
         
+        // Setting is published signal
+        // If isPublished is true, image will be opened book, other wise it will be a closed book
+        isPublishedImageView.image = UIImage(systemName: story.isPublished ? "book.fill" : "book.closed.fill")?.withRenderingMode(.alwaysTemplate)
+        isPublishedImageView.tintColor = story.isPublished ? .systemBlue : .tertiaryLabel
+        
         // Setting title
         titleLabel.text = story.title
         
         // Setting description
         descriptionLabel.text = story.description
     }
-
 }

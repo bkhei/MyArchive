@@ -22,7 +22,7 @@ struct Story: ParseObject {
     var description: String?
     var categories: [String]? // Each string is a category (ie. "Horror", "SciFi", etc)
     var chapters: [Chapter]?
-    var isPublished: Bool?
+    var isPublished: Bool = false
 }
 
 struct Chapter: ParseObject {
@@ -33,4 +33,6 @@ struct Chapter: ParseObject {
     var ACL: ParseACL?
     var originalData: Data?
     // Custom properties
+    var title: String?
+    var content: String?
 }
