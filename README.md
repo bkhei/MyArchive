@@ -121,6 +121,11 @@ A story-sharing app that lets users read and create their own stories.
 ### Milestone 2
 ![Imgur](https://i.imgur.com/5BWyFSB.gif)
 
+### Milestone 3
+![MS3 Gif](https://submissions.us-east-1.linodeobjects.com/ios102/T-4s4t83.gif)
+### Demo
+![Demo 1](https://youtu.be/exfssOHCYo4)
+
 ## Wireframes
 
 ![MyArchive_Wireframe](https://github.com/COP4655-MobileApps-Fall2023/cop4655-mobile-apps-final-project-final-project-group-17/assets/76263266/1e47cd1c-7d3c-46d6-9600-691385f730fd)
