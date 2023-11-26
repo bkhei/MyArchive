@@ -19,6 +19,9 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func onViewTapped(_ sender: Any) {
+        view.endEditing(true)
+    }
 
     // Action function for login -- REPLACE WITH ACTUAL ALERT
     @IBAction func onLoginTapped(_ sender: Any) {

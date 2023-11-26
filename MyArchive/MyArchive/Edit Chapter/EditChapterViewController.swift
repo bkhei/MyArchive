@@ -26,6 +26,12 @@ class EditChapterViewController: UIViewController {
         tableView.dataSource = self
     }
     
+    @IBAction func onViewTapped(_ sender: Any) {
+        view.endEditing(true)
+        let indexPath = IndexPath(row: 0, section: 0)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     @IBAction func didTapSave(_ sender: Any) {
         // Saving changes to local chapter property
         let indexPath = IndexPath(row: 0, section: 0) // There is only 1 cell

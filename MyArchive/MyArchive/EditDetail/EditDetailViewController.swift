@@ -66,6 +66,13 @@ class EditDetailViewController: UIViewController {
         }
     }
     
+    @IBAction func onViewTapped(_ sender: Any) {
+        print("Row 0 tapped, ending editing")
+        view.endEditing(true)
+        let indexPath = IndexPath(row: 0, section: 0)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     // pick image action functions
     @IBAction func didTapCover(_ sender: UITapGestureRecognizer) {
         if let tappedIMG = sender.view as? UIImageView {
