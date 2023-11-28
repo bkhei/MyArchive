@@ -483,9 +483,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="R9w-CZ-a7Y">
+                            <searchBar contentMode="redraw" showsSearchResultsButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R9w-CZ-a7Y">
                                 <rect key="frame" x="0.0" y="103" width="393" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="kDF-Y9-sWu" id="Lzt-Uz-Ril"/>
                                 </connections>
@@ -494,7 +494,7 @@
                                 <rect key="frame" x="0.0" y="159" width="393" height="610"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="77" id="BpW-yB-G8I">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GenreCell" rowHeight="77" id="BpW-yB-G8I" customClass="SearchCell" customModule="MyArchive" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="77"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BpW-yB-G8I" id="9Yw-OU-DjG">
@@ -515,6 +515,9 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="e19-df-Ky1" secondAttribute="trailing" constant="10" id="rUt-7B-vFa"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="genreLabel" destination="e19-df-Ky1" id="Bz6-xt-XHd"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -532,10 +535,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="S8R-GP-Ki9"/>
+                    <connections>
+                        <outlet property="searchBar" destination="R9w-CZ-a7Y" id="J13-gb-TiH"/>
+                        <outlet property="tableView" destination="eQK-GB-Vmx" id="Jiw-lv-iwZ"/>
+                        <segue destination="cmC-GY-QhR" kind="show" identifier="getResults" id="iOL-A5-Kai"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4cJ-l9-Qif" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="895.41984732824426" y="1331.6901408450706"/>
+            <point key="canvasLocation" x="895" y="1332"/>
         </scene>
         <!--Search Result View Controller-->
         <scene sceneID="fao-bl-7aI">
@@ -547,6 +555,7 @@
                         <viewLayoutGuide key="safeArea" id="MQS-Kl-43O"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="vQR-40-OIt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RF8-1K-mC1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
