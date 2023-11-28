@@ -483,23 +483,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="cgV-1C-4xI">
-                                <rect key="frame" x="27" y="92" width="338" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Opk-q7-46R"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="kDF-Y9-sWu" id="4ps-hU-EHM"/>
-                                </connections>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Nv4-ht-j1G">
-                                <rect key="frame" x="0.0" y="136" width="393" height="625"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="658"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="cgV-1C-4xI">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="kDF-Y9-sWu" id="4ps-hU-EHM"/>
+                                    </connections>
+                                </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ROI-BC-fbs">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newCell" id="ROI-BC-fbs">
+                                        <rect key="frame" x="0.0" y="94" width="393" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ROI-BC-fbs" id="A0j-rK-UGY">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
@@ -516,17 +514,18 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="kDF-Y9-sWu" id="dpB-lo-5Uk"/>
+                                    <outlet property="delegate" destination="kDF-Y9-sWu" id="LdP-8i-USQ"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EUx-mj-AVy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="cgV-1C-4xI" firstAttribute="top" secondItem="Gs1-G8-Xgb" secondAttribute="top" constant="92" id="f6L-nc-L51"/>
-                            <constraint firstItem="EUx-mj-AVy" firstAttribute="trailing" secondItem="cgV-1C-4xI" secondAttribute="trailing" constant="28" id="fph-ur-pOP"/>
-                            <constraint firstItem="cgV-1C-4xI" firstAttribute="leading" secondItem="EUx-mj-AVy" secondAttribute="leading" constant="27" id="mVi-KO-Gye"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="S8R-GP-Ki9"/>
+                    <navigationItem key="navigationItem" id="S8R-GP-Ki9">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="WYj-0A-ra8"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="cgV-1C-4xI" id="Gc3-gj-5QN"/>
                         <outlet property="tableView" destination="Nv4-ht-j1G" id="u4u-LL-k32"/>

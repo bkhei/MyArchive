@@ -8,72 +8,61 @@
 import UIKit
 import ParseSwift
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+    
+    
     // Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    // Hold filtered stories
-        private var filteredStories = [Story]()
-
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            searchBar.delegate = self
-            tableView.dataSource = self
-            tableView.delegate = self
-        }
+    var searchResults = [String]()
+    // Functions
+    //
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar){ // called when keyboard search button pressed
+        searchBar.resignFirstResponder()
+        
+        guard let searchResults = searchBar.text else {return}
+        // Query to match title
+        var titleQuery = Story.Query(title?.contains(searchResults) == true)
+        // Query to match desc
+        let descQuery = Story.Query(description?.contains(searchResults) == true)
+        
+        
+        
     }
 
-    // Conforming to UISearchBarDelegate to handle search bar interactions
-    extension SearchViewController: UISearchBarDelegate {
-        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            // Optionally implement a debounce mechanism to wait for the user to stop typing
-        }
-
-        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-            if let title = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines), !title.isEmpty {
-                searchStories(byTitle: title)
-            }
-            searchBar.resignFirstResponder() // Hide the keyboard
-        }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar){ // called when cancel button pressed
+        searchBar.resignFirstResponder()
+        searchBar.text = ""
     }
-
-    // Conforming to UITableViewDataSource to populate the table view
-    extension SearchViewController: UITableViewDataSource {
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return filteredStories.count
-        }
-
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "StoryCell", for: indexPath) as? StoryCell else {
-                fatalError("Could not dequeue StoryCell")
-            }
-            let story = filteredStories[indexPath.row]
-            cell.configure(with: story)
-            return cell
-        }
+    
+    
+    //
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResults.count
+        
     }
-
-    // Optionally implement UITableViewDelegate if you want to handle row selection
-    extension SearchViewController: UITableViewDelegate {
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            // Handle selection event, e.g., navigate to a detail view controller for the selected story
-        }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let newCell = tableView.dequeueReusableCell(withIdentifier: "newCell", for: indexPath) as UITableViewCell
+        
+        
+        newCell.textLabel?.text = searchResults[indexPath.row]
+        return newCell
     }
-
-
-    // Extension for search functionality
-    extension SearchViewController {
-        private func searchStories(byTitle title: String) {
-            // Use a "contains" query to find stories where the title includes the search text
-            let query = Story.query().where("title", matchesRegex: title, modifiers: "i") // 'i' for case-insensitive
-            query.find { [weak self] result in
-                switch result {
-                case .success(let stories):
-                    self?.filteredStories = stories
-                    self?.tableView.reloadData()
-                case .failure(let error):
-                    print("Error fetching stories by title: \(error)")
-                }
-            }
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //searchBar.delegate = self
     }
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+}
+    // Conforming to searchBar Delegate

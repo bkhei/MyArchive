@@ -23,6 +23,16 @@ struct Story: ParseObject {
     var categories: [String]? // Each string is a category (ie. "Horror", "SciFi", etc)
     var chapters: [Chapter]?
     var isPublished: Bool = false
+    // Query/search logic
+    static func search(withTitle title: String, completion: @escaping (Result<[Story], ParseError>) -> Void) {
+        guard !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            completion(.success([])) // Return empty array for empty search
+            return
+        }
+        let query = Query<Story>()
+            .where(\Story.title, matchesRegex: title.lowercased()) // Adjust for query requirements
+        query.find(completion: completion)
+    }
 }
 
 struct Chapter: ParseObject {
