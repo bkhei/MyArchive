@@ -132,7 +132,7 @@
 				A98A07E42AF8742500123CC2 /* Story Lists (Home, Search Results, Library) */,
 				A98A07E52AF8743400123CC2 /* Detail */,
 				A98A07E62AF8743D00123CC2 /* Read */,
-				A98A07D22AF727A900123CC2 /* SearchViewController.swift */,
+				A9FA9F952B1689ED00F56407 /* Search */,
 				A94464CC2AFB2FF00065ED5B /* Create */,
 				A95E777B2B07FF310084CC0E /* EditDetail */,
 				A92984EC2B0BC9F400A5B4ED /* Edit Chapter */,
@@ -189,6 +189,14 @@
 				A98A07D02AF7279300123CC2 /* ReadViewController.swift */,
 			);
 			path = Read;
+			sourceTree = "<group>";
+		};
+		A9FA9F952B1689ED00F56407 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				A98A07D22AF727A900123CC2 /* SearchViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -35,6 +35,12 @@ class EditDetailViewController: UIViewController {
     }
     // Navigation Bar Button Functions
     @IBAction func didTapSave(_ sender: Any) {
+        let indexPath = IndexPath(row: 0, section: 0) // There is only 1 cell
+        if let cell = tableView.cellForRow(at: indexPath) as? EditDetailViewCell {
+            // Saving current values at save to local chapter instance
+            self.story.title = cell.titleTextField.text
+            self.story.description = cell.summaryTextField.text
+        }
         story.save {
             [weak self] result in
             
