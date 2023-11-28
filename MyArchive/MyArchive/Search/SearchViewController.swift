@@ -74,7 +74,7 @@ extension SearchViewController: UISearchBarDelegate {
         self.tableView.reloadData()
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        var searchText = searchBar.text
+        self.searchText = searchBar.text
         performSegue(withIdentifier: "getResults", sender: nil)
     }
 }

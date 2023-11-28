@@ -13,21 +13,20 @@ class SearchResultViewController: UIViewController {
     private var stories = [Story]() {
         didSet {
             // Reload table view data any time the posts variable gets updated.
-            //tableView.reloadData()
+            tableView.reloadData()
         }
     }
     // Search property -- category or string user used to search/filter
     var search: String!
     // table view outlet
-    //@IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Setting table view data source
-        //tableView.dataSource = self
+        tableView.dataSource = self
         print("Search Results Loaded!")
-        print("Results: \(stories)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,7 +35,6 @@ class SearchResultViewController: UIViewController {
     }
     
     private func queryStories(completion: (() -> Void)? = nil) {
-        print("Starting query")
         // Queries Story instances, explicitly including the user property, chapters, and sorted
         let query = Story.query(containsString(key: "title", substring: search)).include("user").include("chapters").order([.descending("createdAt")]).where("isPublished" == true)
         // Finding and returning the stories
@@ -73,7 +71,7 @@ extension SearchResultViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "StoryCell", for: indexPath) as? StoryCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as? StoryCell else {
             return UITableViewCell()
         }
         cell.configure(with: stories[indexPath.row])
