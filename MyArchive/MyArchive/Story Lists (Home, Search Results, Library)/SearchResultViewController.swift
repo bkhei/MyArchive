@@ -17,7 +17,8 @@ class SearchResultViewController: UIViewController {
         }
     }
     // Search property -- category or string user used to search/filter
-    var search: String!
+    var searchTitle: String?
+    var searchGenre: String?
     // table view outlet
     @IBOutlet weak var tableView: UITableView!
 
@@ -35,21 +36,42 @@ class SearchResultViewController: UIViewController {
     }
     
     private func queryStories(completion: (() -> Void)? = nil) {
-        // Queries Story instances, explicitly including the user property, chapters, and sorted
-        let query = Story.query(containsString(key: "title", substring: search)).include("user").include("chapters").order([.descending("createdAt")]).where("isPublished" == true)
-        // Finding and returning the stories
-        query.find {
-            [weak self] result in
-            switch result {
-            case .success(let stories):
-                // Updating the local stories property with the fetched stories
-                self?.stories = stories
-                print("Fetch Stories Success!")
-            case .failure(let error):
-                print("Fetch failed: \(error)")
+        if let st = searchTitle {
+            // Searching by title
+            // Queries Story instances, explicitly including the user property, chapters, and sorted
+            let query = Story.query(containsString(key: "title", substring: st)).include("user").include("chapters").order([.descending("createdAt")]).where("isPublished" == true)
+            // Finding and returning the stories
+            query.find {
+                [weak self] result in
+                switch result {
+                case .success(let stories):
+                    // Updating the local stories property with the fetched stories
+                    self?.stories = stories
+                    print("Fetch Stories Success!")
+                case .failure(let error):
+                    print("Fetch failed: \(error)")
+                }
+                // Completion handler, used to tell pull-to-refresh control to stop refreshing
+                completion?()
             }
-            // Completion handler, used to tell pull-to-refresh control to stop refreshing
-            completion?()
+        } else if let sg = searchGenre {
+            // Searching by genre/category
+            // Queries Story instances, explicitly including the user property, chapters, and sorted
+            let query = Story.query(containsString(key: "categories", substring: sg)).include("user").include("chapters").order([.descending("createdAt")]).where("isPublished" == true)
+            // Finding and returning the stories
+            query.find {
+                [weak self] result in
+                switch result {
+                case .success(let stories):
+                    // Updating the local stories property with the fetched stories
+                    self?.stories = stories
+                    print("Fetch Stories Success!")
+                case .failure(let error):
+                    print("Fetch failed: \(error)")
+                }
+                // Completion handler, used to tell pull-to-refresh control to stop refreshing
+                completion?()
+            }
         }
     }
 

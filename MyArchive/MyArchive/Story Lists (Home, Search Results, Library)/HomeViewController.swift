@@ -45,6 +45,11 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         queryStories()
+        //get index path of current selected table
+        if let indexPath = tableView.indexPathForSelectedRow {
+            //deselecting row at the corresponding index path
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
     private func queryStories(completion: (() -> Void)? = nil) {
         /*

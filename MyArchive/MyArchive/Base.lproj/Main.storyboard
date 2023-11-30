@@ -517,6 +517,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="genreLabel" destination="e19-df-Ky1" id="Bz6-xt-XHd"/>
+                                            <segue destination="cmC-GY-QhR" kind="show" id="EWL-wu-R3Q"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1297,6 +1298,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="xqT-sg-oMz"/>
         <segue reference="fNz-i0-SsH"/>
+        <segue reference="EWL-wu-R3Q"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="DefaultCover" width="512" height="800"/>

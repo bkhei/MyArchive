@@ -30,6 +30,11 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         queryStories()
+        //get index path of current selected table
+        if let indexPath = tableView.indexPathForSelectedRow {
+            //deselecting row at the corresponding index path
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
     private func queryStories(completion: (() -> Void)? = nil) {
         /*
@@ -49,7 +54,6 @@ class SearchViewController: UIViewController {
                 for s in stories {
                     self?.titles.append(s.title!)
                 }
-                print("Titles: \(self?.titles)")
             case .failure(let error):
                 print("Fetch failed: \(error)")
             }
@@ -65,10 +69,18 @@ class SearchViewController: UIViewController {
            let SRVC = segue.destination as? SearchResultViewController {
             //let tappedStory = stories[indexPath.row]
             //SRVC.story = tappedStory
+            // Sending either an exact title search, or a category
+            var tappedSeach = filterSearch[indexPath.row]
+            if Genres.contains(tappedSeach) {
+                // tapped search is a genre
+                SRVC.searchGenre = tappedSeach
+            } else {
+                SRVC.searchTitle = tappedSeach
+            }
         } else {
             if let SRVC = segue.destination as? SearchResultViewController {
                 print("Setting search property")
-                SRVC.search = searchText
+                SRVC.searchTitle = searchText
             }
         }
     }
@@ -101,7 +113,6 @@ extension SearchViewController: UISearchBarDelegate {
         // cycling through each available and seeing it it contains what was searched
         var localGenres = Genres
         let searchArray = localGenres + titles
-        print("SearchArray: \(searchArray)")
         for word in searchArray {
             if word.uppercased().contains(searchText.uppercased()) {
                 filterSearch.append(word)
