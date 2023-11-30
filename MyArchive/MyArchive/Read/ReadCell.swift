@@ -9,7 +9,7 @@ import UIKit
 
 class ReadCell: UITableViewCell {
     // Outlets
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
 
     override func awakeFromNib() {
@@ -24,9 +24,9 @@ class ReadCell: UITableViewCell {
     }
     
     func configure(_ chapter: Chapter) {
-        titleLabel.text = chapter.title
+        titleTextField.text = chapter.title
         contentTextView.text = chapter.content
-        print("Configured title with: \(titleLabel.text)")
+        print("Configured title with: \(titleTextField.text)")
         print("Configured content with: \(contentTextView.text)")
     }
 }
