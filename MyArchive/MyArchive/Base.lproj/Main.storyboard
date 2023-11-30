@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MlE-wN-b6l">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MlE-wN-b6l">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
@@ -625,6 +625,63 @@
                         <outlet property="tableView" destination="gH1-ri-LYd" id="7Sg-zK-5cs"/>
                     </connections>
                 </viewController>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="cml-WR-d7P">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="666"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <prototypes>
+                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StoryCell" rowHeight="209" id="cXb-vP-M47" customClass="StoryCell" customModule="MyArchive" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="50" width="393" height="209"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cXb-vP-M47" id="lFj-v2-89q">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="209"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cKv-jS-CHR" userLabel="Main Stack View">
+                                        <rect key="frame" x="0.0" y="11" width="377" height="179"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Is6-YO-zoy">
+                                                <rect key="frame" x="0.0" y="0.0" width="115" height="179"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="115" id="7zo-qM-6n0"/>
+                                                    <constraint firstAttribute="height" constant="179" id="fXX-wP-cHG"/>
+                                                </constraints>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Wt1-f0-A0A" userLabel="Info Stack View">
+                                                <rect key="frame" x="123" y="0.0" width="254" height="54.666666666666664"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ly-os-eip">
+                                                        <rect key="frame" x="0.0" y="0.0" width="41" height="26.333333333333332"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLp-6N-pmX">
+                                                        <rect key="frame" x="0.0" y="34.333333333333336" width="87.333333333333329" height="20.333333333333336"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="cKv-jS-CHR" secondAttribute="trailing" constant="16" id="M0Y-o6-wGO"/>
+                                    <constraint firstItem="cKv-jS-CHR" firstAttribute="leading" secondItem="lFj-v2-89q" secondAttribute="leading" id="Mdp-XV-Zig"/>
+                                    <constraint firstItem="cKv-jS-CHR" firstAttribute="top" secondItem="lFj-v2-89q" secondAttribute="top" constant="11" id="hNa-Vv-WYQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="cKv-jS-CHR" secondAttribute="bottom" constant="19" id="qVf-GQ-plA"/>
+                                </constraints>
+                            </tableViewCellContentView>
+                            <connections>
+                                <outlet property="coverImageView" destination="Is6-YO-zoy" id="vEJ-Lu-47j"/>
+                                <outlet property="descriptionLabel" destination="kLp-6N-pmX" id="1Vc-de-5Ke"/>
+                                <outlet property="titleLabel" destination="7Ly-os-eip" id="dIy-5h-eUf"/>
+                            </connections>
+                        </tableViewCell>
+                    </prototypes>
+                </tableView>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RF8-1K-mC1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1643.5114503816794" y="1331.6901408450706"/>
