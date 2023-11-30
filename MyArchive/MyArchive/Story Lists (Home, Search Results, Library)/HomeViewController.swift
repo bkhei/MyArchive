@@ -54,7 +54,7 @@ class HomeViewController: UIViewController {
          Getting stories where isPublished is true
          */
         // Queries Story instances, explicitly including the user property and sorted
-        let query = Story.query().include("user").order([.descending("createdAt")]).where("isPublished" == true)
+        let query = Story.query().include("user").include("chapters").order([.descending("createdAt")]).where("isPublished" == true)
         // Finding and returning the stories
         query.find {
             [weak self] result in

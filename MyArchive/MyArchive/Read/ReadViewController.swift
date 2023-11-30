@@ -9,23 +9,32 @@ import UIKit
 
 class ReadViewController: UIViewController {
     // story property
-    var story: Story!
+    var chapters: [Chapter]!
+    
+    // Table View
+    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tableView.dataSource = self
+        print("Read View Loaded!")
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+}
+extension ReadViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return chapters.count
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ReadCell", for: indexPath) as? ReadCell else {
+            return UITableViewCell()
+        }
+        cell.configure(chapters[indexPath.row])
+        return cell
+    }
+    
+    
 }

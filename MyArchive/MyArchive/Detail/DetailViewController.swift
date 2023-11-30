@@ -25,7 +25,7 @@ class DetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let RVC = segue.destination as? ReadViewController {
             let story = story
-            RVC.story = story
+            RVC.chapters = story?.chapters
         }
     }
 
