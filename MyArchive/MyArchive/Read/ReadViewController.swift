@@ -19,6 +19,7 @@ class ReadViewController: UIViewController {
 
         tableView.dataSource = self
         print("Read View Loaded!")
+        //print("Chapters: \(chapters)")
     }
     
 
