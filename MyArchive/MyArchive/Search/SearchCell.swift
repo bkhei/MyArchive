@@ -23,6 +23,12 @@ class SearchCell: UITableViewCell {
     }
     
     func configure(_ genre: String!) {
+        if Genres.contains(genre) {
+            print("\(genre) is a genre")
+            genreLabel.textColor = UIColor.blue
+        } else {
+            genreLabel.textColor = UIColor.black
+        }
         genreLabel.text = genre
     }
 }
