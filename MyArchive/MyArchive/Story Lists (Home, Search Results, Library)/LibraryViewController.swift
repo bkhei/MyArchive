@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import ParseSwift
 
 class LibraryViewController: UIViewController {
     // story property
-    var stories: [Story]!
+    var stories: [Story] = []
 
     // table view outlet
     @IBOutlet weak var tableView: UITableView!
