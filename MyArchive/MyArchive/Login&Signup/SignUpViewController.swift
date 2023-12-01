@@ -20,6 +20,10 @@ class SignUpViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func onViewTapped(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
     // Signup method
     @IBAction func onSignupTapped(_ sender: Any) {
         // Make sure all fields are non-nil and non-empty

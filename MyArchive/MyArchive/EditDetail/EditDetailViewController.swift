@@ -35,6 +35,12 @@ class EditDetailViewController: UIViewController {
     }
     // Navigation Bar Button Functions
     @IBAction func didTapSave(_ sender: Any) {
+        let indexPath = IndexPath(row: 0, section: 0) // There is only 1 cell
+        if let cell = tableView.cellForRow(at: indexPath) as? EditDetailViewCell {
+            // Saving current values at save to local chapter instance
+            self.story.title = cell.titleTextField.text
+            self.story.description = cell.summaryTextField.text
+        }
         story.save {
             [weak self] result in
             
@@ -66,6 +72,13 @@ class EditDetailViewController: UIViewController {
         }
     }
     
+    @IBAction func onViewTapped(_ sender: Any) {
+        print("Row 0 tapped, ending editing")
+        view.endEditing(true)
+        let indexPath = IndexPath(row: 0, section: 0)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     // pick image action functions
     @IBAction func didTapCover(_ sender: UITapGestureRecognizer) {
         if let tappedIMG = sender.view as? UIImageView {
@@ -89,8 +102,17 @@ class EditDetailViewController: UIViewController {
         if let cell = sender as? UITableViewCell,
            let indexPath = tableView.indexPath(for: cell),
            let ECVC = segue.destination as? EditChapterViewController {
-            let tappedChapter = story.chapters![indexPath.row - 1]
+            let i = indexPath.row - 1
+            let tappedChapter = chapters[i]
             ECVC.chapter = tappedChapter
+            ECVC.chapIndex = i
+        }
+        if let btn = sender as? UIBarButtonItem, 
+            let ECVC = segue.destination as? EditChapterViewController {
+            // Create new chapter and send to EditChapter
+            var newChapter = Chapter()
+            ECVC.chapter = newChapter
+            ECVC.delegate = self
         }
     }
     // NEEDS FIXING, FUNCTIONAL WITHOUT THIS
@@ -107,15 +129,15 @@ class EditDetailViewController: UIViewController {
             for ch in story.chapters! {
                 chapterIDS?.append(ch.objectId!)
             }
-            let query = Chapter.query(containedIn(key: "objectId", array: chapterIDS!)).include("chapters")
+            let query = Chapter.query(containedIn(key: "objectId", array: chapterIDS!)).include("chapters").order([.ascending("createdAt")])
             // Finding and returning the stories
             query.find {
                 [weak self] result in
                 switch result {
-                case .success(let chapterss):
+                case .success(let chapters):
                     // Updating the local stories property with the fetched stories
-                    self?.chapters = chapterss
-                    print("Stories fetched!: \(self!.chapters)")
+                    self?.chapters = chapters
+                    print("Chapter 1 fetched!: \(self!.chapters)")
                 case .failure(let error):
                     print("Fetch failed: \(error)")
                 }
@@ -147,12 +169,11 @@ extension EditDetailViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChapterCell", for: indexPath) as? EditDetailViewCell else {
                 return UITableViewCell()
             }
-            var chapterTitle = "Default"
+            var chapterTitle = Chapter(title: "Default", content: "Default")
             if chapters != nil && chapters.count != 0 {
-                if let chapTitle = chapters[indexPath.row - 1].title {
-                    print("Chapter title: \(chapTitle)")
-                    chapterTitle = chapTitle
-                }
+                let chapTitle = chapters[indexPath.row - 1]
+                print("Chapter title: \(chapTitle)")
+                chapterTitle = chapTitle
             }
             cell.configureChapter(with: chapterTitle, with: indexPath.row)
             return cell
@@ -162,7 +183,6 @@ extension EditDetailViewController: UITableViewDataSource {
     
     
 }
-
 // Adopting Cell protocol
 extension EditDetailViewController: EditDetailCellDelegate {
     func updateStory(_ newStory: Story) {
@@ -170,5 +190,26 @@ extension EditDetailViewController: EditDetailCellDelegate {
     }
     func reloadInfo() {
         self.tableView.reloadData()
+    }
+}
+// Adopting EditChapter protocol
+extension EditDetailViewController: EditChapterViewControllerDelegate {
+    func addChapter(with chapter: Chapter) {
+        // Appending chapter
+        story.chapters?.append(chapter)
+        print("\n Appending chapter! \(story.chapters)")
+        // Saving story to db with new chapter
+        story.save {
+            [weak self] result in
+            
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let story):
+                    print("Story saved! \(story)")
+                case .failure(let error):
+                    print("Failed to save story: \(error)")
+                }
+            }
+        }
     }
 }
