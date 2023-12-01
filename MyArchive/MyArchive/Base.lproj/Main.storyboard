@@ -368,10 +368,14 @@
                                                                         </button>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UTK-jh-hhR">
                                                                             <rect key="frame" x="233" y="1" width="50" height="48.666666666666671"/>
+                                                                            <gestureRecognizers/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="50" id="Y2h-Ji-HjY"/>
                                                                                 <constraint firstAttribute="width" constant="50" id="m3Z-8L-dwh"/>
                                                                             </constraints>
+                                                                            <connections>
+                                                                                <outletCollection property="gestureRecognizers" destination="JBQ-tX-Qt3" appends="YES" id="fmL-tc-u37"/>
+                                                                            </connections>
                                                                         </imageView>
                                                                     </subviews>
                                                                     <constraints>
@@ -431,6 +435,7 @@
                                                 <constraint firstItem="VY2-ss-qcZ" firstAttribute="leading" secondItem="ajt-E1-pKY" secondAttribute="leadingMargin" constant="15" id="h8m-Dk-apc"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="addLibraryImageView" destination="UTK-jh-hhR" id="60a-9Q-3sp"/>
                                             <outlet property="coverImageView" destination="adE-fp-9k0" id="NRv-UY-DTN"/>
@@ -441,6 +446,7 @@
                                             <outlet property="readButton" destination="OSG-12-Pfv" id="gjN-fs-CKN"/>
                                             <outlet property="titleLabel" destination="T4D-eZ-wum" id="Vc8-YH-5ay"/>
                                             <outlet property="usernameLabel" destination="Nsf-Bk-Cxi" id="9xd-3I-1QK"/>
+                                            <outletCollection property="gestureRecognizers" destination="afa-ec-wAv" appends="YES" id="WHf-Yc-7YC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -461,6 +467,8 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mn8-wr-KEs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="afa-ec-wAv" userLabel="View Tap Gesture Recognizer"/>
+                <tapGestureRecognizer id="JBQ-tX-Qt3" userLabel="Add Library Tap Gesture Recognizer"/>
             </objects>
             <point key="canvasLocation" x="1644" y="663"/>
         </scene>
