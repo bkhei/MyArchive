@@ -366,7 +366,7 @@
                                                                                 <segue destination="6vN-hQ-n3q" kind="show" id="20J-GG-gJ5"/>
                                                                             </connections>
                                                                         </button>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UTK-jh-hhR">
+                                                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UTK-jh-hhR">
                                                                             <rect key="frame" x="233" y="1" width="50" height="48.666666666666671"/>
                                                                             <gestureRecognizers/>
                                                                             <constraints>
@@ -467,8 +467,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mn8-wr-KEs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="afa-ec-wAv" userLabel="View Tap Gesture Recognizer"/>
-                <tapGestureRecognizer id="JBQ-tX-Qt3" userLabel="Add Library Tap Gesture Recognizer"/>
+                <tapGestureRecognizer id="afa-ec-wAv" userLabel="View Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="onViewTapped:" destination="Xpo-m8-FcI" id="I6c-Ua-fhS"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="JBQ-tX-Qt3" userLabel="Add Library Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="didTapAddLibrary:" destination="Xpo-m8-FcI" id="dhj-gS-1Ie"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1644" y="663"/>
         </scene>

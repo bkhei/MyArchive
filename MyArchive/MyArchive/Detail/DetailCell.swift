@@ -93,9 +93,12 @@ class DetailCell: UITableViewCell {
         
         // Setting add library
         // If story is already in library, minus sign, if not in library, plus sign, to do this must access current user's library
-        let inLibrary = checkLibrary(User.current!)
-        addLibraryImageView.image = UIImage(systemName: inLibrary ? "minus.circle.fill" : "plus.circle.fill")?.withRenderingMode(.alwaysTemplate)
-        addLibraryImageView.tintColor = story.isPublished ? .systemBlue : .tertiaryLabel
+        if let currentUser = User.current,
+           let currentStory = delegate?.requestStoryProperty() {
+            let inLibrary = currentUser.library.contains(currentStory)
+            addLibraryImageView.image = UIImage(systemName: inLibrary ? "minus.circle.fill" : "plus.circle.fill")?.withRenderingMode(.alwaysTemplate)
+            addLibraryImageView.tintColor = inLibrary ? .systemBlue : .tertiaryLabel
+        }
         
         // Setting Username
         usernameLabel.text = story.user?.username

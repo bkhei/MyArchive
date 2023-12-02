@@ -67,6 +67,7 @@ class HomeViewController: UIViewController {
             case .success(let stories):
                 // Updating the local stories property with the fetched stories
                 self?.stories = stories
+                print("Fetched Stories!")
             case .failure(let error):
                 print("Fetch failed: \(error)")
             }

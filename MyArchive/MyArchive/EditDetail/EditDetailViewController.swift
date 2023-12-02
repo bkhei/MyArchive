@@ -26,7 +26,7 @@ class EditDetailViewController: UIViewController {
         print("Story Passed: \(story)")
         
         // Set the publish button to "Publish" or "Unpublish"
-        publishButton.title = story.isPublished ? "Unpublish" : "Publish"
+        publishButton.title = story.isPublished! ? "Unpublish" : "Publish"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,8 +56,8 @@ class EditDetailViewController: UIViewController {
     }
     @IBAction func didTapPublish(_ sender: Any) {
         // Will modify isPublished property and save automatically
-        story.isPublished = story.isPublished ? false : true
-        publishButton.title = story.isPublished ? "Unpublish" : "Publish"
+        story.isPublished = story.isPublished! ? false : true
+        publishButton.title = story.isPublished! ? "Unpublish" : "Publish"
         story.save {
             [weak self] result in
             
