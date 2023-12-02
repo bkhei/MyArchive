@@ -60,19 +60,20 @@ class DetailViewController: UIViewController {
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let user):
-                        print("User saved! \(user)")
+                        print("User saved!")
+                        // Reloading table view to update addLibrary button/gesture image
+                        self?.tableView.reloadData()
                     case .failure(let error):
                         print("Save Error: \(error)")
                     }
                 }
             }
-            // Reloading table view to update addLibrary button/gesture image
-            tableView.reloadData()
             
+            /*
             inLibrary = currentUser.library.contains(story)
             // Change add library button based on whether current story is in the library or not
             tappedIMG.image = UIImage(systemName: inLibrary ? "plus.circle.fill" : "minus.circle.fill")?.withRenderingMode(.alwaysTemplate)
-            tappedIMG.tintColor = inLibrary ? .tertiaryLabel : .systemBlue
+            tappedIMG.tintColor = inLibrary ? .tertiaryLabel : .systemBlue*/
         }
     }
 }

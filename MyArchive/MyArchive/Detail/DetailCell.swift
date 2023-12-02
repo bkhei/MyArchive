@@ -41,36 +41,6 @@ class DetailCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    @IBAction func addLibraryTapped(_ sender: Any) {
-        // Checking whether in library or not
-        let inLibrary = checkLibrary(User.current!)
-        let story = delegate?.requestStoryProperty()
-        var currentUser = User.current!
-        // Add library button/gesture tapped
-        if (inLibrary == true) {
-            // already in library, tapped to remove
-            currentUser.library = currentUser.library.filter {$0 != story}
-        } else {
-            // Appending current story to current user's library array
-            currentUser.library.append(story!)
-        }
-        // Saving user with the updated library
-        currentUser.save {
-            [weak self] result in
-            
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let user):
-                    print("User saved! \(user)")
-                case .failure(let error):
-                    print("Save Error: \(error)")
-                }
-            }
-        }
-        // Reloading table view to update addLibrary button/gesture image
-        self.delegate?.reloadTable()
-    }
 
     func configure(with story: Story)  {
         // Setting cover
@@ -93,11 +63,10 @@ class DetailCell: UITableViewCell {
         
         // Setting add library
         // If story is already in library, minus sign, if not in library, plus sign, to do this must access current user's library
-        if let currentUser = User.current,
-           let currentStory = delegate?.requestStoryProperty() {
-            let inLibrary = currentUser.library.contains(currentStory)
+        if let currentUser = User.current {
+            let inLibrary = currentUser.library.contains(story)
             addLibraryImageView.image = UIImage(systemName: inLibrary ? "minus.circle.fill" : "plus.circle.fill")?.withRenderingMode(.alwaysTemplate)
-            addLibraryImageView.tintColor = inLibrary ? .systemBlue : .tertiaryLabel
+            addLibraryImageView.tintColor = inLibrary ? .tertiaryLabel : .systemBlue
         }
         
         // Setting Username
