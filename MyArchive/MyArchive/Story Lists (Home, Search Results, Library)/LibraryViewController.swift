@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import ParseSwift
 
 class LibraryViewController: UIViewController {
     // story property
-    var stories: [Story]!
+    var stories: [Story] = []
+
     // table view outlet
     @IBOutlet weak var tableView: UITableView!
 
@@ -20,6 +22,32 @@ class LibraryViewController: UIViewController {
         tableView.dataSource = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            queryStories {
+                // Reload the table view once stories are fetched
+                self.tableView.reloadData()
+            }
+        }
+
+    private func queryStories(completion: (() -> Void)? = nil) {
+           // Query to fetch stories
+           let query = Story.query().include("user").order([.descending("createdAt")]).where("isPublished" == true)
+           
+           // Finding and returning the stories
+           query.find {
+               [weak self] result in
+               switch result {
+               case .success(let stories):
+                   // Updating the local stories property with the fetched stories
+                   self?.stories = stories
+                   completion?()
+               case .failure(let error):
+                   print("Fetch failed: \(error)")
+                   completion?()
+               }
+           }
+       }
 
     // Prepare for segue and send data to detail view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
