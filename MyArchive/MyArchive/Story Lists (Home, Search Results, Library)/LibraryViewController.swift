@@ -31,23 +31,30 @@ class LibraryViewController: UIViewController {
         }
 
     private func queryStories(completion: (() -> Void)? = nil) {
-           // Query to fetch stories
-           let query = Story.query().include("user").order([.descending("createdAt")]).where("isPublished" == true)
-           
-           // Finding and returning the stories
-           query.find {
-               [weak self] result in
-               switch result {
-               case .success(let stories):
-                   // Updating the local stories property with the fetched stories
-                   self?.stories = stories
-                   completion?()
-               case .failure(let error):
-                   print("Fetch failed: \(error)")
-                   completion?()
-               }
-           }
-       }
+       // Query to fetch stories
+        if let currentUser = User.current {
+            let library = currentUser.library
+            var localLibrary: [String] = []
+            for st in library {
+                localLibrary.append(st.objectId!)
+            }
+            let query = Story.query(containedIn(key: "objectId", array: localLibrary)).include("user").include("chapters")
+            // Finding and returning the stories
+            query.find {
+                [weak self] result in
+                switch result {
+                case .success(let stories):
+                    // Updating the local stories property with the fetched stories
+                    self?.stories = stories
+                    print("Fetched Library!")
+                    completion?()
+                case .failure(let error):
+                    print("Fetch failed: \(error)")
+                    completion?()
+                }
+            }
+        }
+   }
 
     // Prepare for segue and send data to detail view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

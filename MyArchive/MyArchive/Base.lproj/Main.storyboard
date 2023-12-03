@@ -2,9 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MlE-wN-b6l">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
-
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
@@ -717,7 +715,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-
                             <view contentMode="scaleToFill" id="nuL-k0-tPK">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -783,16 +780,9 @@
                                 <viewLayoutGuide key="safeArea" id="cCi-Ao-85c"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Qwq-0A-oOc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="70L-Az-3h7" firstAttribute="top" secondItem="Qwq-0A-oOc" secondAttribute="top" id="EdS-dF-0ub"/>
-                            <constraint firstItem="70L-Az-3h7" firstAttribute="bottom" secondItem="Qwq-0A-oOc" secondAttribute="bottom" id="RsZ-Zm-9tw"/>
-                            <constraint firstItem="70L-Az-3h7" firstAttribute="leading" secondItem="Qwq-0A-oOc" secondAttribute="leading" id="ZhF-yX-At4"/>
-                            <constraint firstItem="70L-Az-3h7" firstAttribute="trailing" secondItem="Qwq-0A-oOc" secondAttribute="trailing" id="cUK-NT-c15"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TFn-zT-h2h"/>
                     <connections>
@@ -1467,9 +1457,6 @@
         <image name="minus" catalog="system" width="128" height="26"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
