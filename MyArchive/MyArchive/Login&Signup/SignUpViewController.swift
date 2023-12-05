@@ -18,6 +18,7 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        signupButton.tintColor = activeColor
     }
     
     @IBAction func onViewTapped(_ sender: Any) {

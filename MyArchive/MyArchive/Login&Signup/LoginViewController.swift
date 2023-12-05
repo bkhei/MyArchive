@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        loginButton.tintColor = activeColor
     }
     
     @IBAction func onViewTapped(_ sender: Any) {

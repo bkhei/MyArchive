@@ -24,8 +24,8 @@
                                         <rect key="frame" x="83.666666666666686" y="0.0" width="186" height="66.666666666666671"/>
                                         <color key="tintColor" red="0.35759943181818177" green="0.30032782910452033" blue="0.28443256132113187" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="40"/>
-                                        <color key="textColor" red="0.35759943179999998" green="0.2930972993" blue="0.276866051" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <color key="highlightedColor" red="0.35759943179999998" green="0.2930972993" blue="0.276866051" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="textColor" red="0.59335542929999996" green="0.20386764469999999" blue="0.1427304761" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="highlightedColor" red="0.59335542929999996" green="0.20386764469999999" blue="0.1427304761" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Vx4-LX-AuD" userLabel="Form Stack View">
                                         <rect key="frame" x="5.3333333333333428" y="76.6666666666667" width="342.66666666666663" height="208.33333333333337"/>
@@ -135,10 +135,10 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtF-L9-sbo">
                                         <rect key="frame" x="0.0" y="0.0" width="96.666666666666671" height="56"/>
-                                        <color key="tintColor" red="0.35759943179999998" green="0.3003278291" blue="0.2844325613" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="tintColor" red="0.59335542929999996" green="0.20386764469999999" blue="0.1427304761" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
                                         <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
+                                        <color key="highlightedColor" red="0.59335542929999996" green="0.20386764469999999" blue="0.1427304761" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nrH-5i-jgd" userLabel="Field Stack View">
                                         <rect key="frame" x="0.0" y="66" width="353" height="224"/>
@@ -239,17 +239,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="K71-na-J4R" userLabel="Main Stack View">
-                                                    <rect key="frame" x="0.0" y="11" width="377" height="179"/>
+                                                    <rect key="frame" x="20" y="20" width="353" height="169"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultCover" translatesAutoresizingMaskIntoConstraints="NO" id="e1m-Is-kQj">
-                                                            <rect key="frame" x="0.0" y="0.0" width="115" height="179"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="115" height="169"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="115" id="Kaa-6O-Vmb"/>
                                                                 <constraint firstAttribute="height" constant="179" id="U82-Ky-eQN"/>
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cdh-2D-bL8" userLabel="Info Stack View">
-                                                            <rect key="frame" x="123" y="0.0" width="254" height="54.666666666666664"/>
+                                                            <rect key="frame" x="123" y="0.0" width="230" height="54.666666666666664"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssl-bF-AzN">
                                                                     <rect key="frame" x="0.0" y="0.0" width="41" height="26.333333333333332"/>
@@ -269,10 +269,10 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="K71-na-J4R" secondAttribute="trailing" constant="16" id="2vh-3K-9XS"/>
-                                                <constraint firstItem="K71-na-J4R" firstAttribute="top" secondItem="G8d-EA-7el" secondAttribute="top" constant="11" id="4V9-u5-80l"/>
-                                                <constraint firstItem="K71-na-J4R" firstAttribute="leading" secondItem="G8d-EA-7el" secondAttribute="leading" id="qVW-1a-vRi"/>
-                                                <constraint firstAttribute="bottom" secondItem="K71-na-J4R" secondAttribute="bottom" constant="19" id="vAb-qF-TeJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="K71-na-J4R" secondAttribute="trailing" constant="20" id="2vh-3K-9XS"/>
+                                                <constraint firstItem="K71-na-J4R" firstAttribute="top" secondItem="G8d-EA-7el" secondAttribute="top" constant="20" id="4V9-u5-80l"/>
+                                                <constraint firstItem="K71-na-J4R" firstAttribute="leading" secondItem="G8d-EA-7el" secondAttribute="leading" constant="20" id="qVW-1a-vRi"/>
+                                                <constraint firstAttribute="bottom" secondItem="K71-na-J4R" secondAttribute="bottom" constant="20" id="vAb-qF-TeJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -736,17 +736,17 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Yoj-2K-eit" userLabel="Main Stack View">
-                                                            <rect key="frame" x="0.0" y="11" width="377" height="179"/>
+                                                            <rect key="frame" x="20" y="20" width="353" height="169"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultCover" translatesAutoresizingMaskIntoConstraints="NO" id="TsC-mA-yzw">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="115" height="179"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="115" height="169"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="115" id="VaZ-O5-Xvm"/>
                                                                         <constraint firstAttribute="height" constant="179" id="glx-dm-2LM"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TQo-zt-x9q" userLabel="Info Stack View">
-                                                                    <rect key="frame" x="123" y="0.0" width="254" height="54.666666666666664"/>
+                                                                    <rect key="frame" x="123" y="0.0" width="230" height="54.666666666666664"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfz-Hs-IPR">
                                                                             <rect key="frame" x="0.0" y="0.0" width="41" height="26.333333333333332"/>
@@ -766,10 +766,10 @@
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="Yoj-2K-eit" firstAttribute="leading" secondItem="2vx-pS-CYT" secondAttribute="leading" id="kVe-Fv-Ryc"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Yoj-2K-eit" secondAttribute="trailing" constant="16" id="lWw-KO-XLr"/>
-                                                        <constraint firstItem="Yoj-2K-eit" firstAttribute="top" secondItem="2vx-pS-CYT" secondAttribute="top" constant="11" id="rbx-NQ-atf"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Yoj-2K-eit" secondAttribute="bottom" constant="19" id="tic-pO-bw7"/>
+                                                        <constraint firstItem="Yoj-2K-eit" firstAttribute="leading" secondItem="2vx-pS-CYT" secondAttribute="leading" constant="20" id="kVe-Fv-Ryc"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Yoj-2K-eit" secondAttribute="trailing" constant="20" id="lWw-KO-XLr"/>
+                                                        <constraint firstItem="Yoj-2K-eit" firstAttribute="top" secondItem="2vx-pS-CYT" secondAttribute="top" constant="20" id="rbx-NQ-atf"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Yoj-2K-eit" secondAttribute="bottom" constant="20" id="tic-pO-bw7"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -1350,6 +1350,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8w7-tI-EO6">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="19"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1369,6 +1372,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="F7F-oA-x9x">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="19"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1388,6 +1394,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="N27-ft-Yhq">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="19"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1407,6 +1416,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hRM-Am-sAu">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.59335542929999996" green="0.20386764469999999" blue="0.1427304761" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="19"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
