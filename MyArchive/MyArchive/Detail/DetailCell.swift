@@ -67,7 +67,8 @@ class DetailCell: UITableViewCell {
         if let currentUser = User.current {
             let inLibrary = currentUser.library.contains(story)
             addLibraryImageView.image = UIImage(systemName: inLibrary ? "minus.circle.fill" : "plus.circle.fill")?.withRenderingMode(.alwaysTemplate)
-            addLibraryImageView.tintColor = inLibrary ? inactiveColor : activeColor
+            //addLibraryImageView.tintColor = inLibrary ? inactiveColor : activeColor
+            addLibraryImageView.tintColor = activeColor
         }
         
         // Setting Username

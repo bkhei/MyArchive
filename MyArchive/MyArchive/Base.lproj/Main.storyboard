@@ -607,6 +607,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EUx-mj-AVy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="eQK-GB-Vmx" firstAttribute="leading" secondItem="EUx-mj-AVy" secondAttribute="leading" id="5Ta-ZR-gz7"/>
                             <constraint firstItem="EUx-mj-AVy" firstAttribute="trailing" secondItem="eQK-GB-Vmx" secondAttribute="trailing" id="7Ad-mW-Xkk"/>
@@ -616,6 +617,9 @@
                             <constraint firstItem="EUx-mj-AVy" firstAttribute="bottom" secondItem="eQK-GB-Vmx" secondAttribute="bottom" id="VFk-QS-6BY"/>
                             <constraint firstItem="R9w-CZ-a7Y" firstAttribute="trailing" secondItem="EUx-mj-AVy" secondAttribute="trailing" id="wt6-cy-DHS"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="oHJ-jl-i5g" appends="YES" id="bec-Bb-yqG"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="S8R-GP-Ki9"/>
                     <connections>
@@ -625,6 +629,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4cJ-l9-Qif" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="oHJ-jl-i5g">
+                    <connections>
+                        <action selector="onViewTapped:" destination="kDF-Y9-sWu" id="5I5-uf-2WQ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="895" y="1332"/>
         </scene>
@@ -1345,7 +1354,9 @@
         <scene sceneID="Sj1-aM-hg5">
             <objects>
                 <navigationController storyboardIdentifier="HomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="SAh-LY-Anv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="z6y-X5-abg"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="z6y-X5-abg">
+                        <color key="badgeColor" red="0.59335542929999996" green="0.20386764469999999" blue="0.1427304761" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8w7-tI-EO6">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -1367,7 +1378,9 @@
         <scene sceneID="qdE-3i-Fl4">
             <objects>
                 <navigationController storyboardIdentifier="SearchNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="WT6-OQ-xhK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="F4E-oa-6Rn"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="F4E-oa-6Rn">
+                        <color key="badgeColor" red="0.59335542929999996" green="0.20386764469999999" blue="0.1427304761" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="F7F-oA-x9x">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>

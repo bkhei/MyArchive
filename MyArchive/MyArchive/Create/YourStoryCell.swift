@@ -50,8 +50,8 @@ class YourStoryCell: UITableViewCell {
         // Setting is published signal
         // If isPublished is true, image will be opened book, other wise it will be a closed book
         isPublishedImageView.image = UIImage(systemName: story.isPublished! ? "book.fill" : "book.closed.fill")?.withRenderingMode(.alwaysTemplate)
-        isPublishedImageView.tintColor = story.isPublished! ? activeColor : inactiveColor
-        
+        //isPublishedImageView.tintColor = story.isPublished! ? activeColor : inactiveColor
+        isPublishedImageView.tintColor = inactiveColor
         // Setting title
         titleLabel.text = story.title
         

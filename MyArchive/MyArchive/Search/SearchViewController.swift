@@ -36,6 +36,12 @@ class SearchViewController: UIViewController {
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }
+    
+    @IBAction func onViewTapped(_ sender: Any) {
+        print("view tapped, ending editing")
+        view.endEditing(true)
+    }
+    
     private func queryStories(completion: (() -> Void)? = nil) {
         /*
          Creating a query to fetch stories
