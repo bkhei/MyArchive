@@ -1198,6 +1198,11 @@
                                             <action selector="didTapSave:" destination="XWd-fG-BHo" id="1rH-ev-vRg"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem title="Delete" id="ZQM-lp-Igj">
+                                        <connections>
+                                            <action selector="didTapDelete:" destination="XWd-fG-BHo" id="Joy-gP-NQf"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="Add Chapter" id="ERL-St-zSD">
                                         <connections>
                                             <segue destination="ler-Y1-hTE" kind="show" id="4UX-6J-DP5"/>
@@ -1308,6 +1313,11 @@
                                     <barButtonItem title="Save" id="oVs-NB-oYG">
                                         <connections>
                                             <action selector="didTapSave:" destination="ler-Y1-hTE" id="JWr-Ew-49z"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Delete" id="tgB-dZ-TDM">
+                                        <connections>
+                                            <action selector="didTapDelete:" destination="ler-Y1-hTE" id="zkv-sh-N1e"/>
                                         </connections>
                                     </barButtonItem>
                                 </barButtonItems>

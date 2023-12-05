@@ -9,6 +9,7 @@ import UIKit
 
 protocol EditChapterViewControllerDelegate: AnyObject {
     func addChapter(with chapter: Chapter)
+    func removeChapter(with chapter: Chapter)
 }
 
 class EditChapterViewController: UIViewController {
@@ -31,9 +32,24 @@ class EditChapterViewController: UIViewController {
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
     @IBAction func didTapSave(_ sender: Any) {
         saveStory()
+    }
+    @IBAction func didTapDelete(_ sender: Any) {
+        // Removing the chapter from the story
+        self.delegate?.removeChapter(with: chapter)
+        chapter.delete {
+            [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let story):
+                    print("Chapter deleted!")
+                    self?.navigationController?.popViewController(animated: true)
+                case .failure(let error):
+                    print("Failed to delete chapter: \(error)")
+                }
+            }
+        }
     }
     
     // Save story

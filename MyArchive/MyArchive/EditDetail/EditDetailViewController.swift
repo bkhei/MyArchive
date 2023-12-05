@@ -34,9 +34,44 @@ class EditDetailViewController: UIViewController {
         queryStory()
         queryChapters()
     }
+    
     // Navigation Bar Button Functions
     @IBAction func didTapSave(_ sender: Any) {
         saveStory()
+    }
+    @IBAction func didTapDelete(_ sender: Any) {
+        // Removing all chapters from story property and DB then saving
+        for chapter in chapters {
+            print("Removing 1 chapter")
+            chapter.delete {
+                [weak self] result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let story):
+                        print("Chapter deleted!")
+                        self?.navigationController?.popViewController(animated: true)
+                    case .failure(let error):
+                        print("Failed to delete chapter: \(error)")
+                    }
+                }
+            }
+        }
+        saveStory()
+        
+        // Removing story from DB
+        print("Removing story")
+        story.delete {
+            [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let story):
+                    print("Story deleted!")
+                    self?.navigationController?.popViewController(animated: true)
+                case .failure(let error):
+                    print("Failed to delete story: \(error)")
+                }
+            }
+        }
     }
     @IBAction func didTapPublish(_ sender: Any) {
         // Will modify isPublished property and save automatically
@@ -45,14 +80,12 @@ class EditDetailViewController: UIViewController {
         print(story.isPublished! ? "Publishing..." : "Unpublishing...")
         saveStory()
     }
-    
     @IBAction func onViewTapped(_ sender: Any) {
         print("Row 0 tapped, ending editing")
         view.endEditing(true)
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
     // pick image action functions
     @IBAction func didTapCover(_ sender: UITapGestureRecognizer) {
         if let tappedIMG = sender.view as? UIImageView {
@@ -106,6 +139,10 @@ class EditDetailViewController: UIViewController {
         }
     }
     
+    // Delete function
+    private func deleteChapter(with chapter: Chapter) {
+        
+    }
     // Save story
     private func saveStory() {
         print("Saving stories...")
@@ -258,7 +295,6 @@ extension EditDetailViewController: EditDetailCellDelegate {
 // Adopting EditChapter protocol
 extension EditDetailViewController: EditChapterViewControllerDelegate {
     func addChapter(with chapter: Chapter) {
-        print("Querying story...")
         // Appending chapter
         self.story.chapters?.append(chapter)
         print("Appending chapter...")
@@ -275,5 +311,22 @@ extension EditDetailViewController: EditChapterViewControllerDelegate {
             }
         }
         print("Story saved with new chapter! \(String(describing: self.story.objectId))")
+    }
+    func removeChapter(with chapter: Chapter) {
+        // Appending chapter
+        self.story.chapters = self.story.chapters?.filter{$0 != chapter}
+        print("Removing chapter...")
+        // Saving story to db with new chapter
+        saveStoryPrep { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let savedStory):
+                    self?.story = savedStory
+                    print("Story saved! \(savedStory.objectId)")
+                case .failure(let error):
+                    print("Failed to save story: \(error)")
+                }
+            }
+        }
     }
 }
