@@ -53,14 +53,13 @@ class EditChapterViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let chapter):
-                    print("Chapter saved! \(chapter)")
+                    print("Chapter saved! \(chapter.objectId)")
                     // Check if the given chapter is an existing chapter or new chapter
                     if self?.chapIndex == nil {
-                        print("\n Chapter is new! Adding to story")
+                        print("Chapter is new! Adding to story")
                         // chapIndex is null, no chapIndex passed because chapter is new
                         // Append chapter to the local story in EditDetail
                         self?.delegate?.addChapter(with: chapter)
-                        print("CHAPTER ADDED")
                     }
                 case .failure(let error):
                     print("Failed to save story: \(error)")

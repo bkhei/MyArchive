@@ -31,6 +31,7 @@ class EditDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        queryStory()
         queryChapters()
     }
     // Navigation Bar Button Functions
@@ -41,7 +42,7 @@ class EditDetailViewController: UIViewController {
         // Will modify isPublished property and save automatically
         story.isPublished = story.isPublished! ? false : true
         publishButton.title = story.isPublished! ? "Unpublish" : "Publish"
-        print(story.isPublished! ? "Unpublishing..." : "Publishing...")
+        print(story.isPublished! ? "Publishing..." : "Unpublishing...")
         saveStory()
     }
     
@@ -72,9 +73,24 @@ class EditDetailViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Saving story to DB if it is new
+        if story.isSaved == false {
+            saveStoryPrep { [weak self] result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let savedStory):
+                        self?.story = savedStory
+                        print("Story saved! \(savedStory.objectId)")
+                    case .failure(let error):
+                        print("Failed to save story: \(error)")
+                    }
+                }
+            }
+        }
         if let cell = sender as? UITableViewCell,
            let indexPath = tableView.indexPath(for: cell),
            let ECVC = segue.destination as? EditChapterViewController {
+            // Tapped on existing chapter
             let i = indexPath.row - 1
             let tappedChapter = chapters[i]
             ECVC.chapter = tappedChapter
@@ -82,6 +98,7 @@ class EditDetailViewController: UIViewController {
         }
         if let btn = sender as? UIBarButtonItem, 
             let ECVC = segue.destination as? EditChapterViewController {
+            // Tapped on add a chapter
             // Create new chapter and send to EditChapter
             var newChapter = Chapter()
             ECVC.chapter = newChapter
@@ -102,29 +119,74 @@ class EditDetailViewController: UIViewController {
             self.story.title = cell.titleTextField.text
             self.story.description = cell.summaryTextField.text
         }
+        print("saving 1")
         story.save {
             [weak self] result in
-            
+            print("saving 2")
             DispatchQueue.main.async {
                 switch result {
                 case .success(let story):
-                    print("Story saved!")
+                    self?.story = story
+                    print("Story saved! \(story.objectId)")
                 case .failure(let error):
                     print("Failed to save story: \(error)")
                 }
             }
         }
     }
-    // NEEDS FIXING, FUNCTIONAL WITHOUT THIS
+    private func saveStoryPrep(completion: @escaping (Result<Story, ParseError>) -> Void) {
+        print("Saving stories...")
+        let indexPath = IndexPath(row: 0, section: 0) // There is only 1 cell
+        if let cell = tableView.cellForRow(at: indexPath) as? EditDetailViewCell {
+            // Saving current values (coverFile, title, description) at save to local story instance "story"
+            // Categories are saved to the db on change in EditDetail
+            // coverFile are saved to EditDetail's local story instance "localStory" on change
+            // title and description are retrieved from the current values in the UIElements
+            self.story.coverFile = cell.localStory?.coverFile
+            self.story.title = cell.titleTextField.text
+            self.story.description = cell.summaryTextField.text
+        }
+        print("saving 1")
+        story.save {
+            [weak self] result in
+            print("saving 2")
+            completion(result)
+        }
+    }
+    private func queryStory(completion: (() -> Void)? = nil) {
+        /*
+         Creating a query to fetch story and initialize chapters based on current story
+         Properties that are parse objects (Chapter in this case) stored by reference in Parse DB, so need to be explicityly included
+         Getting chapters based on current story
+         */
+        if let storyID = story.objectId {
+            // story exists already in DB
+            let query = Story.query(containsString(key: "objectId", substring: story.objectId!)).include("chapters").include("user")
+            // Finding and returning the stories
+            query.find {
+                [weak self] result in
+                switch result {
+                case .success(let stories):
+                    // Updating the local stories property with the fetched stories
+                    self?.story = stories[0]
+                    print("Story Fetched! \(stories[0].objectId)")
+                case .failure(let error):
+                    print("Fetch failed: \(error)")
+                }
+                // Completion handler, used to tell pull-to-refresh control to stop refreshing
+                completion?()
+            }
+        } else {
+            // Story does not exist yet
+        }
+    }
     private func queryChapters(completion: (() -> Void)? = nil) {
         /*
          Creating a query to fetch story and initialize chapters based on current story
          Properties that are parse objects (Chapter in this case) stored by reference in Parse DB, so need to be explicityly included
          Getting chapters based on current story
          */
-        if let story = story {
-            //let storyConstraint: QueryConstraint = containsString(key: "objectId", substring: id)
-            // Including chapters with user because the result of this will also be passed onto edit detail which needs chapter information
+        if story != nil {
             var chapterIDS: [String]? = []
             for ch in story.chapters! {
                 chapterIDS?.append(ch.objectId!)
@@ -137,7 +199,7 @@ class EditDetailViewController: UIViewController {
                 case .success(let chapters):
                     // Updating the local stories property with the fetched stories
                     self?.chapters = chapters
-                    print("Chapter 1 fetched!: \(self!.chapters)")
+                    print("Chapter 1 fetched!")
                 case .failure(let error):
                     print("Fetch failed: \(error)")
                 }
@@ -172,9 +234,9 @@ extension EditDetailViewController: UITableViewDataSource {
             }
             var chapterTitle = Chapter(title: "Default", content: "Default")
             if chapters != nil && chapters.count != 0 {
-                let chapTitle = chapters[indexPath.row - 1]
-                print("Chapter title: \(chapTitle)")
-                chapterTitle = chapTitle
+                let chap = chapters[indexPath.row - 1]
+                print("Chapter title: \(chap.title)")
+                chapterTitle = chap
             }
             cell.configureChapter(with: chapterTitle, with: indexPath.row)
             return cell
@@ -187,7 +249,7 @@ extension EditDetailViewController: UITableViewDataSource {
 // Adopting Cell protocol
 extension EditDetailViewController: EditDetailCellDelegate {
     func updateStory(_ newStory: Story) {
-        story = newStory
+        self.story = newStory
     }
     func reloadInfo() {
         self.tableView.reloadData()
@@ -196,21 +258,22 @@ extension EditDetailViewController: EditDetailCellDelegate {
 // Adopting EditChapter protocol
 extension EditDetailViewController: EditChapterViewControllerDelegate {
     func addChapter(with chapter: Chapter) {
+        print("Querying story...")
         // Appending chapter
-        story.chapters?.append(chapter)
-        print("\n Appending chapter! \(story.chapters)")
+        self.story.chapters?.append(chapter)
+        print("Appending chapter...")
         // Saving story to db with new chapter
-        story.save {
-            [weak self] result in
-            
+        saveStoryPrep { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let story):
-                    print("Story saved! \(story)")
+                case .success(let savedStory):
+                    self?.story = savedStory
+                    print("Story saved! \(savedStory.objectId)")
                 case .failure(let error):
                     print("Failed to save story: \(error)")
                 }
             }
         }
+        print("Story saved with new chapter! \(String(describing: self.story.objectId))")
     }
 }
