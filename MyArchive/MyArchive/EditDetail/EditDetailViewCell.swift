@@ -86,7 +86,7 @@ class EditDetailViewCell: UITableViewCell, UITextFieldDelegate, PHPickerViewCont
         }
     }
     
-    // Get changes from edited text fields (title, summary)
+    /*// Get changes from edited text fields (title, summary)
     func textFieldDidEndEditing(_ tf: UITextField) {
         // Focus removed
         print("Focus removed")
@@ -103,12 +103,13 @@ class EditDetailViewCell: UITableViewCell, UITextFieldDelegate, PHPickerViewCont
             delegate?.updateStory(localStory!)
             print("New summary: \(localStory?.description)")
         }
-    }
+    }*/
     
     // Get changes from edited buttons (categories)
     @IBAction func deleteG1(_ sender: Any) {
         if var genre = genre1Label.text, let index = localStory?.categories?.firstIndex(of: genre) {
             localStory?.categories?.remove(at: index)
+            updateLocalStory()
             delegate?.updateStory(localStory!)
             delegate?.reloadInfo()
         } else {
@@ -119,6 +120,7 @@ class EditDetailViewCell: UITableViewCell, UITextFieldDelegate, PHPickerViewCont
         if let genre = genre2Label.text,
            let index = localStory?.categories?.firstIndex(of: genre){
             localStory?.categories?.remove(at: index)
+            updateLocalStory()
             delegate?.updateStory(localStory!)
             delegate?.reloadInfo()
         } else {
@@ -129,6 +131,7 @@ class EditDetailViewCell: UITableViewCell, UITextFieldDelegate, PHPickerViewCont
         if let genre = genre3Label.text,
            let index = localStory?.categories?.firstIndex(of: genre){
             localStory?.categories?.remove(at: index)
+            updateLocalStory()
             delegate?.updateStory(localStory!)
             delegate?.reloadInfo()
         } else {
@@ -146,6 +149,7 @@ class EditDetailViewCell: UITableViewCell, UITextFieldDelegate, PHPickerViewCont
             }else {
                 print("Adding category \(tempCat)")
                 localStory?.categories?.append(tempCat)
+                updateLocalStory()
                 delegate?.updateStory(localStory!)
                 delegate?.reloadInfo()
             }
@@ -154,11 +158,12 @@ class EditDetailViewCell: UITableViewCell, UITextFieldDelegate, PHPickerViewCont
     
     // Configure cell functions
     func configureChapter(with chap: Chapter, with num: Int) {
-        print("Chapter Info: \(chap)")
+        print("Configuring Chapter")
         chapterTitleLabel.text = chap.title
         chapterNumberLabel.text = String(num)
     }
     func configureDetail(with story: Story) {
+        print("Configuring Details")
         // Setting up Pop-up buttons
         let actionClosure = { (action: UIAction) in
             self.tempCat = String(describing: action.title)
@@ -215,5 +220,12 @@ class EditDetailViewCell: UITableViewCell, UITextFieldDelegate, PHPickerViewCont
         genre3Label.text = localCat[2]
         
         localStory = story
+    }
+    
+    private func updateLocalStory() {
+        // coverFile of localStory is updated on change
+        // Updating title and description of localStory with current values of UIElements
+        self.localStory?.title = titleTextField.text
+        self.localStory?.description = summaryTextField.text
     }
 }

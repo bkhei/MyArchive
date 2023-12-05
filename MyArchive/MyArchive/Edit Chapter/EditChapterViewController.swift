@@ -33,6 +33,11 @@ class EditChapterViewController: UIViewController {
     }
     
     @IBAction func didTapSave(_ sender: Any) {
+        saveStory()
+    }
+    
+    // Save story
+    private func saveStory() {
         // Saving changes to local chapter property
         let indexPath = IndexPath(row: 0, section: 0) // There is only 1 cell
         if let cell = tableView.cellForRow(at: indexPath) as? EditChapterCell {
@@ -62,8 +67,6 @@ class EditChapterViewController: UIViewController {
                 }
             }
         }
-        
-        
     }
 }
 // Conforming to table view data source

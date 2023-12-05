@@ -35,41 +35,14 @@ class EditDetailViewController: UIViewController {
     }
     // Navigation Bar Button Functions
     @IBAction func didTapSave(_ sender: Any) {
-        let indexPath = IndexPath(row: 0, section: 0) // There is only 1 cell
-        if let cell = tableView.cellForRow(at: indexPath) as? EditDetailViewCell {
-            // Saving current values at save to local chapter instance
-            self.story.title = cell.titleTextField.text
-            self.story.description = cell.summaryTextField.text
-        }
-        story.save {
-            [weak self] result in
-            
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let story):
-                    print("Story saved! \(story)")
-                case .failure(let error):
-                    print("Failed to save story: \(error)")
-                }
-            }
-        }
+        saveStory()
     }
     @IBAction func didTapPublish(_ sender: Any) {
         // Will modify isPublished property and save automatically
         story.isPublished = story.isPublished! ? false : true
         publishButton.title = story.isPublished! ? "Unpublish" : "Publish"
-        story.save {
-            [weak self] result in
-            
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let story):
-                    print("Story saved! \(story)")
-                case .failure(let error):
-                    print("Failed to save story: \(error)")
-                }
-            }
-        }
+        print(story.isPublished! ? "Unpublishing..." : "Publishing...")
+        saveStory()
     }
     
     @IBAction func onViewTapped(_ sender: Any) {
@@ -113,6 +86,33 @@ class EditDetailViewController: UIViewController {
             var newChapter = Chapter()
             ECVC.chapter = newChapter
             ECVC.delegate = self
+        }
+    }
+    
+    // Save story
+    private func saveStory() {
+        print("Saving stories...")
+        let indexPath = IndexPath(row: 0, section: 0) // There is only 1 cell
+        if let cell = tableView.cellForRow(at: indexPath) as? EditDetailViewCell {
+            // Saving current values (coverFile, title, description) at save to local story instance "story"
+            // Categories are saved to the db on change in EditDetail
+            // coverFile are saved to EditDetail's local story instance "localStory" on change
+            // title and description are retrieved from the current values in the UIElements
+            self.story.coverFile = cell.localStory?.coverFile
+            self.story.title = cell.titleTextField.text
+            self.story.description = cell.summaryTextField.text
+        }
+        story.save {
+            [weak self] result in
+            
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let story):
+                    print("Story saved!")
+                case .failure(let error):
+                    print("Failed to save story: \(error)")
+                }
+            }
         }
     }
     // NEEDS FIXING, FUNCTIONAL WITHOUT THIS
@@ -160,8 +160,9 @@ extension EditDetailViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.delegate = self
-            cell.titleTextField.delegate = cell
-            cell.summaryTextField.delegate = cell
+            //cell.titleTextField.delegate = cell
+            //cell.summaryTextField.delegate = cell
+            cell.localStory = story
             cell.configureDetail(with: story)
             return cell
         } else {
