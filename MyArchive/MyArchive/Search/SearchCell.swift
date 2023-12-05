@@ -24,7 +24,7 @@ class SearchCell: UITableViewCell {
     
     func configure(_ genre: String!) {
         if Genres.contains(genre) {
-            genreLabel.textColor = UIColor.blue
+            genreLabel.textColor = activeColor
         } else {
             genreLabel.textColor = UIColor.black
         }

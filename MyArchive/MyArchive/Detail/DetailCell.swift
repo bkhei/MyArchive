@@ -43,6 +43,7 @@ class DetailCell: UITableViewCell {
     }
 
     func configure(with story: Story)  {
+        readButton.tintColor = activeColor
         // Setting cover
         // Getting cover file and url
         if let coverFile = story.coverFile,
@@ -66,7 +67,7 @@ class DetailCell: UITableViewCell {
         if let currentUser = User.current {
             let inLibrary = currentUser.library.contains(story)
             addLibraryImageView.image = UIImage(systemName: inLibrary ? "minus.circle.fill" : "plus.circle.fill")?.withRenderingMode(.alwaysTemplate)
-            addLibraryImageView.tintColor = inLibrary ? .tertiaryLabel : .systemBlue
+            addLibraryImageView.tintColor = inLibrary ? inactiveColor : activeColor
         }
         
         // Setting Username

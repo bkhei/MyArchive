@@ -21,7 +21,7 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         // Note, Genres is a global variable that holds an array of strings
         filterSearch = Genres
-        titles = []
+        self.titles = []
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
@@ -51,9 +51,11 @@ class SearchViewController: UIViewController {
             switch result {
             case .success(let stories):
                 // Updating the local stories property with the fetched stories
+                self?.titles = []
                 for s in stories {
                     self?.titles.append(s.title!)
                 }
+                print("Titles after query: \(self?.titles)")
             case .failure(let error):
                 print("Fetch failed: \(error)")
             }
@@ -112,6 +114,7 @@ extension SearchViewController: UISearchBarDelegate {
         }
         // cycling through each available and seeing it it contains what was searched
         var localGenres = Genres
+        print("Titles: \(self.titles)")
         let searchArray = localGenres + titles
         for word in searchArray {
             if word.uppercased().contains(searchText.uppercased()) {

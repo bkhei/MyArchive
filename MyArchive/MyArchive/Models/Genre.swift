@@ -7,5 +7,9 @@
 
 import Foundation
 import ParseSwift
+import UIKit
 
 let Genres = ["General", "Drama", "Horror", "Fantasy", "Sci-Fi", "Romance"]
+let activeColor = UIColor(red: 151/255, green: 52/255, blue: 36/255, alpha: 1.0)
+let inactiveColor = UIColor(red: 198/255, green: 159/255, blue: 166/255, alpha: 1.0)
+let baseColor = UIColor(red: 91/255, green: 77/255, blue: 73/255, alpha: 1.0)
