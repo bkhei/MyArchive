@@ -48,10 +48,10 @@ A story-sharing app that lets users read and create their own stories.
 - [X] Users can create chapters for their stories
 - [X] Users can view other users' published story cover, title, and description
 - [X] Users can view other users' published story details
-- [ ] Users can view other users' published story chapters
-- [ ] Users can search stories by category
-- [ ] Users can search stories by title
-- [ ] Users can add stories to their library (private)
+- [X] Users can view other users' published story chapters
+- [X] Users can search stories by category
+- [X] Users can search stories by title
+- [X] Users can add stories to their library (private)
 
 **Optional Nice-to-have Stories**
 
@@ -68,28 +68,25 @@ A story-sharing app that lets users read and create their own stories.
 
 - [X] Login/Sign Up Screen
 * users can create a profile and login
-- [ ] Home Screen
+- [X] Home Screen
 * users can view other users' stories
-- [ ] Detail Screen
+- [X] Detail Screen
 * Users can view other users' story details
 * Users can add stories to their library (private)
-- [ ] Read Screen
+- [X] Read Screen
 * Users can view other users' story chapters
-- [ ] Search Screen
+- [X] Search Screen
 * Users can search stories by category
 * Users can search stories by title
-- [ ] Search Result Screen
-* Users can search stories by category
-* Users can search stories by title
-- [ ] Your Stories Screen
+- [X] Your Stories Screen
 * Users can view their own stories
 * Users can create a story
-- [ ] Edit Detail Screen
+- [X] Edit Detail Screen
 * Users can create a story
 * Users can publish their created stories
-- [ ] Edit Chapter Screen
+- [X] Edit Chapter Screen
 * Users can create chapters for their stories
-- [ ] Library Screen
+- [X] Library Screen
 * Users can add stories to their private library
 
 ### 3. Navigation
@@ -103,17 +100,17 @@ A story-sharing app that lets users read and create their own stories.
 
 **Flow Navigation** (Screen to Screen)
 
-- [ ] Home Screen
+- [X] Home Screen
 * Detail Screen
 * Read Screen
-- [ ] Search Screen
+- [X] Search Screen
 * Search Result Screen
 * Detail Screen
 * Read Screen
-- [ ] Library Screen
+- [X] Library Screen
 * Detail Screen
 * Read Screen
-- [ ] Write Screen
+- [X] Write Screen
 * Edit Overview Screen
 * Edit Chapter Screen
 
