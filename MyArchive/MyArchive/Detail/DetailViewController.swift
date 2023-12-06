@@ -44,30 +44,61 @@ class DetailViewController: UIViewController {
             // Accessing the tapped image (there is only 1)
             // Add current story to current user's library
             // Checking whether in library or not
-            var inLibrary = currentUser.library.contains(story)
-            // Add library button/gesture tapped
-            if (inLibrary == true) {
-                // already in library, tapped to remove
-                currentUser.library = currentUser.library.filter {$0 != story}
+            var inLibrary: Bool?
+            if currentUser.library.isEmpty {
+                inLibrary = false
             } else {
-                // Appending current story to current user's library array
-                currentUser.library.append(story)
-            }
-            // Saving user with the updated library
-            currentUser.save {
-                [weak self] result in
-                
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let user):
-                        print("User saved!")
-                        // Reloading table view to update addLibrary button/gesture image
-                        self?.tableView.reloadData()
-                    case .failure(let error):
-                        print("Save Error: \(error)")
+                for s in currentUser.library {
+                    print("Current: \(s.objectId), story: \(story.objectId)")
+                    if s.objectId == story.objectId {
+                        inLibrary = true
+                    } else {
+                        inLibrary = false
                     }
                 }
             }
+            print("In library \(inLibrary)")
+            // Add library button/gesture tapped
+            if (inLibrary == true) {
+                // already in library, tapped to remove
+                currentUser.library = currentUser.library.filter{$0.objectId != story.objectId}
+                
+                // Saving user with the updated library
+                currentUser.save {
+                    [weak self] result in
+                    
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success(let user):
+                            print("User saved!")
+                            // Reloading table view to update addLibrary button/gesture image
+                            self?.tableView.reloadData()
+                        case .failure(let error):
+                            print("Save Error: \(error)")
+                        }
+                    }
+                }
+            } else {
+                // Appending current story to current user's library array
+                currentUser.library.append(story)
+                
+                // Saving user with the updated library
+                currentUser.save {
+                    [weak self] result in
+                    
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success(let user):
+                            print("User saved!")
+                            // Reloading table view to update addLibrary button/gesture image
+                            self?.tableView.reloadData()
+                        case .failure(let error):
+                            print("Save Error: \(error)")
+                        }
+                    }
+                }
+            }
+            
             
             /*
             inLibrary = currentUser.library.contains(story)
