@@ -697,6 +697,7 @@
                                             <outlet property="coverImageView" destination="2Ef-kK-uEE" id="boZ-JP-dro"/>
                                             <outlet property="descriptionLabel" destination="DdO-PC-SX3" id="odM-BQ-GUW"/>
                                             <outlet property="titleLabel" destination="wAH-aM-PAP" id="Ivk-fJ-cGm"/>
+                                            <segue destination="Xpo-m8-FcI" kind="show" id="dax-lL-sRM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -785,6 +786,7 @@
                                                     <outlet property="coverImageView" destination="TsC-mA-yzw" id="TKF-hN-2Or"/>
                                                     <outlet property="descriptionLabel" destination="iED-hr-2QI" id="JiS-qC-kp3"/>
                                                     <outlet property="titleLabel" destination="qfz-Hs-IPR" id="BbD-tp-gTY"/>
+                                                    <segue destination="Xpo-m8-FcI" kind="show" id="cCc-HP-j0Y"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -849,6 +851,7 @@
                                                                         </label>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book.pages.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="x41-er-kCm">
                                                                             <rect key="frame" x="49" y="-1.6666666666666679" width="50" height="52.666666666666671"/>
+                                                                            <color key="tintColor" systemColor="tintColor"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="50" id="9Ow-ib-t4U"/>
                                                                                 <constraint firstAttribute="height" constant="50" id="aVz-qE-z0U"/>
@@ -1488,6 +1491,7 @@
         <segue reference="xqT-sg-oMz"/>
         <segue reference="fNz-i0-SsH"/>
         <segue reference="EWL-wu-R3Q"/>
+        <segue reference="dax-lL-sRM"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.59335542929999996" green="0.20386764469999999" blue="0.1427304761" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
     <resources>
@@ -1504,6 +1508,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -65,8 +65,29 @@ class DetailCell: UITableViewCell {
         // Setting add library
         // If story is already in library, minus sign, if not in library, plus sign, to do this must access current user's library
         if let currentUser = User.current {
-            let inLibrary = currentUser.library.contains(story)
-            addLibraryImageView.image = UIImage(systemName: inLibrary ? "minus.circle.fill" : "plus.circle.fill")?.withRenderingMode(.alwaysTemplate)
+            // Getting inLibrary
+            var inLibrary: Bool?
+            if currentUser.library.isEmpty {
+                inLibrary = false
+            } else {
+                for s in currentUser.library {
+                    print("Current: \(s.objectId), story: \(story.objectId)")
+                    if s.objectId == story.objectId {
+                        inLibrary = true
+                    } else {
+                        inLibrary = false
+                    }
+                }
+            }
+            
+            /*TESTprint("Current User:")
+            for i in currentUser.library {
+                print(i.objectId)
+            }*/
+            
+            print("Story ID: \(story.objectId)")
+            print("Already in library \(inLibrary)")
+            addLibraryImageView.image = UIImage(systemName: inLibrary! ? "minus.circle.fill" : "plus.circle.fill")?.withRenderingMode(.alwaysTemplate)
             //addLibraryImageView.tintColor = inLibrary ? inactiveColor : activeColor
             addLibraryImageView.tintColor = activeColor
         }
