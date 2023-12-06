@@ -38,8 +38,17 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func onViewTapped(_ sender: Any) {
-        print("view tapped, ending editing")
-        view.endEditing(true)
+        print(sender)
+        let tapLocation = (sender as AnyObject).location(in: tableView)
+
+        if let indexPath = tableView.indexPathForRow(at: tapLocation) {
+            // Tapped on a cell, trigger the segue
+            performSegue(withIdentifier: "getResults", sender: sender)
+        } else {
+            // Tapped outside the cells, handle the tap gesture
+            print("view tapped, ending editing")
+            view.endEditing(true)
+        }
     }
     
     private func queryStories(completion: (() -> Void)? = nil) {

@@ -71,7 +71,7 @@ class DetailCell: UITableViewCell {
                 inLibrary = false
             } else {
                 for s in currentUser.library {
-                    print("Current: \(s.objectId), story: \(story.objectId)")
+                    //TESTprint("Current: \(s.objectId), story: \(story.objectId)")
                     if s.objectId == story.objectId {
                         inLibrary = true
                     } else {

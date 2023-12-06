@@ -49,7 +49,7 @@ class DetailViewController: UIViewController {
                 inLibrary = false
             } else {
                 for s in currentUser.library {
-                    print("Current: \(s.objectId), story: \(story.objectId)")
+                    //TESTprint("Current: \(s.objectId), story: \(story.objectId)")
                     if s.objectId == story.objectId {
                         inLibrary = true
                     } else {
@@ -60,6 +60,7 @@ class DetailViewController: UIViewController {
             print("In library \(inLibrary)")
             // Add library button/gesture tapped
             if (inLibrary == true) {
+                print("Removing from library...")
                 // already in library, tapped to remove
                 currentUser.library = currentUser.library.filter{$0.objectId != story.objectId}
                 
@@ -79,6 +80,7 @@ class DetailViewController: UIViewController {
                     }
                 }
             } else {
+                print("Adding to library...")
                 // Appending current story to current user's library array
                 currentUser.library.append(story)
                 

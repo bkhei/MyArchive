@@ -618,7 +618,7 @@
                             <constraint firstItem="R9w-CZ-a7Y" firstAttribute="trailing" secondItem="EUx-mj-AVy" secondAttribute="trailing" id="wt6-cy-DHS"/>
                         </constraints>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="oHJ-jl-i5g" appends="YES" id="bec-Bb-yqG"/>
+                            <outletCollection property="gestureRecognizers" destination="Nnh-n1-Vlv" appends="YES" id="lbt-Lk-WGb"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="S8R-GP-Ki9"/>
@@ -629,9 +629,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4cJ-l9-Qif" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="oHJ-jl-i5g">
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="Nnh-n1-Vlv">
                     <connections>
-                        <action selector="onViewTapped:" destination="kDF-Y9-sWu" id="5I5-uf-2WQ"/>
+                        <action selector="onViewTapped:" destination="kDF-Y9-sWu" id="UZR-Ze-JSH"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -1490,8 +1490,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="xqT-sg-oMz"/>
         <segue reference="fNz-i0-SsH"/>
-        <segue reference="EWL-wu-R3Q"/>
-        <segue reference="dax-lL-sRM"/>
+        <segue reference="iOL-A5-Kai"/>
+        <segue reference="TIE-z0-7Tx"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.59335542929999996" green="0.20386764469999999" blue="0.1427304761" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
     <resources>
