@@ -26,7 +26,6 @@ A story-sharing app that lets users read and create their own stories.
 - [ ] Messages between users
 - [ ] Tagging system for stories
 
-![Imgur](https://imgur.com/et27fzl)
 ### Demo
 ![Imgur](https://imgur.com/txJZUZY)
 
